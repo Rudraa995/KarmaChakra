@@ -1015,3 +1015,274 @@ a {
     padding: 40px 22px;
   }
 }
+
+
+/* ===== SEVA FORM SECTION ===== */
+.seva-form-section {
+  padding: 20px 20px 90px;
+  background: var(--bg);
+}
+
+.seva-form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Form sections */
+.form-section {
+  margin-bottom: 30px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #f2e2bd;
+}
+
+.form-label span {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.form-help {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* Upload box */
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 32px 16px;
+  cursor: pointer;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.15);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.upload-box:hover {
+  border-color: var(--gold);
+  background: rgba(217, 152, 18, 0.06);
+}
+
+.upload-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.upload-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: var(--gold-light);
+}
+
+.upload-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Photo preview */
+.photo-preview-container {
+  display: none;
+  position: relative;
+  margin-top: 12px;
+}
+
+.photo-preview-container.active {
+  display: block;
+}
+
+.photo-preview-container img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.remove-photo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Inputs */
+.tree-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--cream);
+  transition: border-color 0.2s ease;
+}
+
+.tree-input::placeholder {
+  color: var(--muted);
+}
+
+.tree-input:focus {
+  border-color: var(--gold);
+}
+
+.tree-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.character-count {
+  text-align: right;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Location */
+.location-row {
+  display: flex;
+  gap: 8px;
+}
+
+.location-row .tree-input {
+  flex: 1;
+}
+
+.location-btn {
+  white-space: nowrap;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff970b, #f6bf2e);
+  color: #201003;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.location-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 145, 8, .25);
+}
+
+.location-status {
+  font-size: 12px;
+  margin-top: 6px;
+  color: #7bc47f;
+}
+
+.location-status.error {
+  color: #e57373;
+}
+
+/* AI verification box */
+.verification-info {
+  display: flex;
+  gap: 12px;
+  background: rgba(217, 152, 18, 0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 26px;
+}
+
+.verification-icon {
+  font-size: 22px;
+}
+
+.verification-info h3 {
+  font-size: 14px;
+  margin: 0 0 4px;
+  color: #f2e2bd;
+}
+
+.verification-info p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff8f05, #f5c42c);
+  color: #241103;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 13px 32px rgba(255, 142, 7, .17);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 17px 40px rgba(255, 142, 7, .27);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-loader {
+  display: none;
+  animation: spin 0.8s linear infinite;
+}
+
+.submit-btn.loading .submit-loader {
+  display: inline-block;
+}
+
+.submit-btn.loading #sevaSubmitText {
+  display: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.secure-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+/* Back to overview — page end */
+.seva-back-section {
+  padding: 0 20px 100px;
+}

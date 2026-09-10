@@ -368,3 +368,113 @@ function initSevaPage() {
     `).join("");
     }
 }
+
+// ===== SEVA FORM LOGIC =====
+document.addEventListener('DOMContentLoaded', function () {
+
+  const sevaForm = document.getElementById('sevaForm');
+  if (!sevaForm) return; // agar seva page nahi hai to yahin ruk jao
+
+  const photoInput = document.getElementById('sevaPhoto');
+  const uploadBox = document.getElementById('sevaUploadBox');
+  const previewContainer = document.getElementById('sevaPhotoPreviewContainer');
+  const previewImg = document.getElementById('sevaPhotoPreview');
+  const removePhotoBtn = document.getElementById('removeSevaPhoto');
+
+  const descriptionInput = document.getElementById('sevaDescription');
+  const charCount = document.getElementById('sevaCharCount');
+
+  const locationInput = document.getElementById('sevaLocation');
+  const getLocationBtn = document.getElementById('getSevaLocation');
+  const locationStatus = document.getElementById('sevaLocationStatus');
+
+  const submitBtn = document.getElementById('sevaSubmitBtn');
+
+  // ---- 1. PHOTO PREVIEW ----
+  photoInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert('Photo 10MB se chhoti honi chahiye.');
+      this.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewImg.src = e.target.result;
+      previewContainer.classList.add('active');
+      uploadBox.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  removePhotoBtn.addEventListener('click', function () {
+    photoInput.value = '';
+    previewImg.src = '';
+    previewContainer.classList.remove('active');
+    uploadBox.style.display = 'flex';
+  });
+
+  // ---- 2. CHARACTER COUNT ----
+  descriptionInput.addEventListener('input', function () {
+    charCount.textContent = this.value.length;
+  });
+
+  // ---- 3. GPS LOCATION ----
+  getLocationBtn.addEventListener('click', function () {
+    if (!navigator.geolocation) {
+      locationStatus.textContent = 'Geolocation is not supported by this browser.';
+      locationStatus.classList.add('error');
+      return;
+    }
+
+    locationStatus.textContent = 'Location fetch ho rahi hai...';
+    locationStatus.classList.remove('error');
+
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const lat = position.coords.latitude.toFixed(6);
+        const lng = position.coords.longitude.toFixed(6);
+        locationInput.value = `${lat}, ${lng}`;
+        locationStatus.textContent = '✓ Location captured successfully';
+        locationStatus.classList.remove('error');
+      },
+      function (error) {
+        locationStatus.textContent = 'Location permission denied ya nahi mil payi.';
+        locationStatus.classList.add('error');
+      }
+    );
+  });
+
+  // ---- 4. FORM SUBMIT ----
+  sevaForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!photoInput.files[0]) {
+      alert('Please photo upload karo.');
+      return;
+    }
+    if (!locationInput.value) {
+      alert('Please location capture karo.');
+      return;
+    }
+
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+
+    // Yahan par tum apna actual API call laga sakte ho
+    setTimeout(function () {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      alert('Seva submitted for verification! 🙏');
+      sevaForm.reset();
+      previewContainer.classList.remove('active');
+      uploadBox.style.display = 'flex';
+      charCount.textContent = '0';
+      locationStatus.textContent = '';
+    }, 1800);
+  });
+
+});

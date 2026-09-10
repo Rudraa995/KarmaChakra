@@ -53,7 +53,7 @@
     </div>
   </nav>
 
-  <!-- Seva hero -->
+  <!-- Seva hero (back button yahan se hata diya) -->
   <main class="karma-detail-section">
     <div class="container kc-container">
       <div class="karma-detail-card" data-reveal>
@@ -65,9 +65,6 @@
           expectation of return. Pick an activity below, perform it in the real
           world, and submit proof for AI verification.
         </p>
-        <div class="hero-actions karma-detail-ctas">
-          <a href="karma.html?domain=seva" class="btn kc-outline-btn">← Back to Seva Karma Overview</a>
-        </div>
       </div>
 
       <!-- Your Seva stats — mock data for now, see SEVA_USER_STATS in script.js -->
@@ -77,6 +74,77 @@
       </div>
     </div>
   </main>
+
+  <!-- Seva submission form -->
+  <section class="seva-form-section">
+    <div class="container kc-container">
+      <div class="seva-form-card">
+        <form id="sevaForm">
+
+          <!-- PHOTO -->
+          <div class="form-section">
+            <label class="form-label"><span>1.</span> Upload Proof Photo</label>
+            <p class="form-help">Upload a clear photo showing your seva activity.</p>
+
+            <label for="sevaPhoto" class="upload-box" id="sevaUploadBox">
+              <div class="upload-icon">📷</div>
+              <div class="upload-title">Select a Photo</div>
+              <div class="upload-subtitle">JPG, JPEG or PNG · Max 10 MB</div>
+              <input type="file" id="sevaPhoto" accept="image/jpeg,image/png,image/jpg" hidden required>
+            </label>
+
+            <div id="sevaPhotoPreviewContainer" class="photo-preview-container">
+              <img id="sevaPhotoPreview" src="" alt="Seva preview">
+              <button type="button" id="removeSevaPhoto" class="remove-photo">×</button>
+            </div>
+          </div>
+
+          <!-- SEVA TITLE -->
+          <div class="form-section">
+            <label for="sevaTitle" class="form-label"><span>2.</span> Seva Title</label>
+            <p class="form-help">What kind of service did you perform?</p>
+            <input type="text" id="sevaTitle" class="tree-input" placeholder="e.g. Fed 20 people, Donated blankets" required>
+          </div>
+
+          <!-- GPS LOCATION -->
+          <div class="form-section">
+            <label class="form-label"><span>3.</span> GPS Location</label>
+            <p class="form-help">Tell us where this seva activity took place.</p>
+            <div class="location-row">
+              <input type="text" id="sevaLocation" class="tree-input" placeholder="Your activity location" readonly required>
+              <button type="button" id="getSevaLocation" class="location-btn">📍 Get Location</button>
+            </div>
+            <div id="sevaLocationStatus" class="location-status"></div>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div class="form-section">
+            <label for="sevaDescription" class="form-label"><span>4.</span> Describe Your Contribution</label>
+            <p class="form-help">Tell us a little about your seva activity.</p>
+            <textarea id="sevaDescription" class="tree-input tree-textarea" maxlength="500" rows="5" placeholder="Example: I distributed food packets to 20 families near the railway station." required></textarea>
+            <div class="character-count"><span id="sevaCharCount">0</span> / 500</div>
+          </div>
+
+          <!-- AI VERIFICATION -->
+          <div class="verification-info">
+            <div class="verification-icon">✨</div>
+            <div>
+              <h3>AI Verification</h3>
+              <p>Our Karma AI will analyze your photo, location and contribution details to verify your Karma.</p>
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <button type="submit" id="sevaSubmitBtn" class="submit-btn">
+            <span id="sevaSubmitText">Submit for Verification</span>
+            <span id="sevaSubmitLoader" class="submit-loader">⟳</span>
+          </button>
+
+          <p class="secure-note">🔒 Your submission is securely processed for Karma verification.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
   <!-- Seva activity catalog -->
   <section class="seva-catalog-section">
@@ -90,6 +158,13 @@
 
       <!-- Populated by initSevaPage() in script.js from SEVA_ACTIVITIES -->
       <div class="karma-grid" data-seva-catalog data-reveal></div>
+    </div>
+  </section>
+
+  <!-- Back to overview — ab yahan, page ke bilkul end mein -->
+  <section class="seva-back-section">
+    <div class="container kc-container text-center">
+      <a href="karma.html?domain=seva" class="btn kc-outline-btn">← Back to Seva Karma Overview</a>
     </div>
   </section>
 
