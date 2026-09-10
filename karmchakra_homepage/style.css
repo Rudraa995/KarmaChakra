@@ -1286,3 +1286,1164 @@ a {
 .seva-back-section {
   padding: 0 20px 100px;
 }
+/* =========================================================
+   SEVA ACTIVITY PAGE
+   ========================================================= */
+
+.seva-activity-hero {
+    padding: 150px 0 70px;
+    background: var(--kc-bg, #fafafa);
+}
+
+.seva-back-link {
+    display: inline-block;
+    margin-bottom: 35px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.seva-back-link:hover {
+    text-decoration: underline;
+}
+
+.seva-activity-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.seva-activity-icon {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background: rgba(184, 134, 11, 0.10);
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.seva-activity-header h1 {
+    margin: 5px 0 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 6vw, 68px);
+    font-weight: 700;
+}
+
+.seva-activity-header p {
+    max-width: 650px;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+
+/* GOAL */
+
+.seva-goal-section {
+    padding: 20px 0 60px;
+}
+
+.seva-goal-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.seva-goal-main h2 {
+    margin: 8px 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 38px;
+}
+
+.seva-goal-main p {
+    margin: 0;
+    opacity: 0.7;
+}
+
+.seva-goal-points {
+    min-width: 150px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(184, 134, 11, 0.10);
+}
+
+.seva-goal-points strong {
+    display: block;
+    font-size: 38px;
+}
+
+.seva-goal-points span {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+
+/* HISTORY */
+
+.seva-history-section {
+    padding: 40px 0 80px;
+}
+
+.seva-history-list {
+    display: grid;
+    gap: 15px;
+}
+
+.seva-history-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.seva-history-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(184, 134, 11, 0.08);
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.seva-history-content h3 {
+    margin: 0 0 5px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.seva-history-content p {
+    margin: 0 0 4px;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.seva-history-content span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.seva-empty-history {
+    padding: 30px;
+    text-align: center;
+    border: 1px dashed rgba(0, 0, 0, 0.15);
+    border-radius: 18px;
+    opacity: 0.6;
+}
+
+
+/* FORM AREA */
+
+.seva-activity-form-section {
+    padding: 40px 0 90px;
+}
+
+.seva-activity-form-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.seva-activity-info {
+    position: sticky;
+    top: 120px;
+}
+
+.seva-activity-info h2 {
+    margin: 10px 0 15px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+}
+
+.seva-activity-info > p {
+    line-height: 1.7;
+    opacity: 0.7;
+}
+
+.seva-verification-box {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(184, 134, 11, 0.08);
+}
+
+.seva-verification-box > span {
+    font-size: 25px;
+}
+
+.seva-verification-box strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.seva-verification-box p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+
+/* ACTIVITY FORM */
+
+.seva-activity-form-section .seva-form-card {
+    padding: 35px;
+}
+
+.seva-activity-form-section .form-section {
+    margin-bottom: 25px;
+}
+
+.seva-activity-form-section .form-label {
+    font-weight: 700;
+}
+
+.seva-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.seva-photo-preview {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.seva-photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-seva-photo {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .seva-activity-hero {
+        padding-top: 120px;
+    }
+
+    .seva-activity-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .seva-activity-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 35px;
+    }
+
+    .seva-goal-panel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .seva-goal-points {
+        width: 100%;
+    }
+
+    .seva-activity-form-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .seva-activity-info {
+        position: static;
+    }
+
+    .seva-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .seva-activity-form-section .seva-form-card {
+        padding: 22px;
+    }
+}
+
+/* =========================================================
+   KARMCHAKRA — FINAL DARK SEVA THEME
+   Keep ALL pages in the same Seva Karma brown + gold theme
+   ========================================================= */
+
+:root {
+    --bg: #100702;
+    --bg-soft: #1b0b03;
+    --bg-alt: #180a03;
+    --brown: #3a1806;
+
+    --gold: #d99812;
+    --gold-light: #f5c84b;
+    --orange: #ff9410;
+
+    --cream: #f4e8cf;
+    --muted: #a99a86;
+
+    --border: rgba(217, 152, 18, 0.22);
+    --border-strong: rgba(217, 152, 18, 0.48);
+
+    --card-bg: rgba(255, 208, 128, 0.035);
+
+    --radius-lg: 22px;
+    --radius-md: 16px;
+}
+
+
+/* =========================================================
+   GLOBAL DARK THEME
+   ========================================================= */
+
+html,
+body {
+    background: #100702 !important;
+    color: #f4e8cf !important;
+}
+
+body {
+    min-height: 100vh;
+}
+
+
+/* Prevent Bootstrap/light-theme defaults */
+main,
+section,
+header,
+footer,
+.container-fluid {
+    color: #f4e8cf;
+}
+
+
+/* =========================================================
+   SEVA ACTIVITY HERO
+   ========================================================= */
+
+.seva-activity-hero {
+    min-height: auto !important;
+    padding: 130px 20px 70px !important;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(217, 152, 18, 0.10),
+            transparent 35%
+        ),
+        #100702 !important;
+}
+
+.seva-back-link {
+    display: inline-block;
+    margin-bottom: 38px;
+
+    color: #dca92e !important;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+.seva-back-link:hover {
+    color: #f5c84b !important;
+    transform: translateX(-4px);
+}
+
+
+.seva-activity-header {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.seva-activity-icon {
+    width: 96px;
+    height: 96px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 28px;
+
+    font-size: 46px;
+
+    background: rgba(217, 152, 18, 0.16);
+
+    border: 1px solid rgba(217, 152, 18, 0.40);
+
+    box-shadow:
+        0 0 35px rgba(217, 152, 18, 0.10),
+        inset 0 0 20px rgba(217, 152, 18, 0.05);
+}
+
+
+.seva-activity-header h1 {
+    margin: 8px 0 12px !important;
+
+    color: #efd49c !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(44px, 6vw, 76px);
+
+    line-height: 1;
+
+    font-weight: 600;
+}
+
+
+.seva-activity-header p {
+    max-width: 700px;
+
+    margin: 0 !important;
+
+    color: #bdb09c !important;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GOAL SECTION
+   ========================================================= */
+
+.seva-goal-section {
+    padding: 20px 20px 80px !important;
+
+    background: #100702 !important;
+}
+
+
+.seva-goal-panel {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 38px 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border: 1px solid rgba(217, 152, 18, 0.25);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(217, 152, 18, 0.09),
+            rgba(255, 208, 128, 0.025)
+        ) !important;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.18);
+}
+
+
+.seva-goal-main h2 {
+    margin: 10px 0 !important;
+
+    color: #f2e2bd !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(30px, 4vw, 44px);
+
+    font-weight: 600;
+}
+
+
+.seva-goal-main p {
+    margin: 0 !important;
+
+    color: #a99a86 !important;
+
+    font-size: 14px;
+}
+
+
+.seva-goal-points {
+    min-width: 150px;
+
+    padding: 24px 28px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: rgba(217, 152, 18, 0.13);
+
+    border: 1px solid rgba(217, 152, 18, 0.25);
+}
+
+
+.seva-goal-points strong {
+    display: block;
+
+    color: #f1d999 !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 46px;
+
+    line-height: 1;
+}
+
+
+.seva-goal-points span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #b89f76 !important;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HISTORY
+   ========================================================= */
+
+.seva-history-section {
+    padding: 40px 20px 100px !important;
+
+    background: #100702 !important;
+
+    border-top: 1px solid rgba(217, 152, 18, 0.12);
+}
+
+
+.seva-history-list {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+}
+
+
+.seva-history-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px;
+
+    border: 1px solid rgba(217, 152, 18, 0.18);
+
+    border-radius: 18px;
+
+    background: rgba(255, 208, 128, 0.035);
+
+    transition: 0.25s ease;
+}
+
+
+.seva-history-item:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(217, 152, 18, 0.38);
+
+    background: rgba(217, 152, 18, 0.055);
+}
+
+
+.seva-history-icon {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    font-size: 28px;
+
+    background: rgba(217, 152, 18, 0.12);
+
+    border: 1px solid rgba(217, 152, 18, 0.20);
+}
+
+
+.seva-history-content h3 {
+    margin: 0 0 5px !important;
+
+    color: #f2e2bd !important;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.seva-history-content p {
+    margin: 0 0 4px !important;
+
+    color: #b89f76 !important;
+
+    font-size: 11px;
+}
+
+
+.seva-history-content span {
+    color: #dca92e !important;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.seva-empty-history {
+    grid-column: 1 / -1;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #a99a86 !important;
+
+    border: 1px dashed rgba(217, 152, 18, 0.25);
+
+    border-radius: 18px;
+
+    background: rgba(255, 208, 128, 0.025);
+}
+
+
+/* =========================================================
+   ACTIVITY FORM SECTION
+   ========================================================= */
+
+.seva-activity-form-section {
+    padding: 40px 20px 120px !important;
+
+    background: #100702 !important;
+
+    border-top: 1px solid rgba(217, 152, 18, 0.12);
+}
+
+
+.seva-activity-form-grid {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 0.85fr 1.15fr;
+
+    gap: 50px;
+
+    align-items: start;
+}
+
+
+.seva-activity-info {
+    padding-top: 20px;
+}
+
+
+.seva-activity-info h2 {
+    margin: 12px 0 14px !important;
+
+    color: #efd49c !important;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 42px;
+
+    font-weight: 600;
+}
+
+
+.seva-activity-info > p {
+    max-width: 430px;
+
+    margin: 0 0 25px !important;
+
+    color: #a99a86 !important;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   AI VERIFICATION BOX
+   ========================================================= */
+
+.seva-verification-box {
+    display: flex;
+
+    gap: 14px;
+
+    max-width: 460px;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    background: rgba(217, 152, 18, 0.06);
+
+    border: 1px solid rgba(217, 152, 18, 0.20);
+}
+
+
+.seva-verification-box > span {
+    font-size: 24px;
+}
+
+
+.seva-verification-box strong {
+    color: #f2e2bd !important;
+
+    font-size: 14px;
+}
+
+
+.seva-verification-box p {
+    margin: 5px 0 0 !important;
+
+    color: #a99a86 !important;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.seva-activity-form-section .seva-form-card {
+    width: 100%;
+
+    max-width: none;
+
+    margin: 0;
+
+    padding: 38px;
+
+    background: rgba(255, 208, 128, 0.035) !important;
+
+    border: 1px solid rgba(217, 152, 18, 0.22) !important;
+
+    border-radius: 22px;
+}
+
+
+.seva-activity-form-section .form-section {
+    margin-bottom: 26px;
+}
+
+
+.seva-activity-form-section .form-label {
+    color: #f2e2bd !important;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.seva-activity-form-section .form-help {
+    color: #a99a86 !important;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.seva-activity-form-section .tree-input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    color: #f4e8cf !important;
+
+    background: rgba(0, 0, 0, 0.24) !important;
+
+    border: 1px solid rgba(217, 152, 18, 0.22) !important;
+
+    border-radius: 11px;
+
+    outline: none;
+}
+
+
+.seva-activity-form-section .tree-input::placeholder {
+    color: #7d7160 !important;
+}
+
+
+.seva-activity-form-section .tree-input:focus {
+    border-color: #d99812 !important;
+
+    box-shadow: 0 0 0 3px rgba(217, 152, 18, 0.08);
+}
+
+
+.seva-activity-form-section select.tree-input {
+    color: #f4e8cf !important;
+
+    background-color: #180a03 !important;
+}
+
+
+.seva-activity-form-section select.tree-input option {
+    color: #f4e8cf;
+
+    background: #180a03;
+}
+
+
+/* =========================================================
+   PHOTO GRID
+   ========================================================= */
+
+.seva-photo-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.seva-photo-preview {
+    position: relative;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(217, 152, 18, 0.25);
+
+    background: #180a03;
+}
+
+
+.seva-photo-preview img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+.remove-seva-photo {
+    position: absolute;
+
+    top: 7px;
+    right: 7px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    color: #fff;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   LOCATION BUTTON
+   ========================================================= */
+
+.location-row {
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.location-btn {
+    flex-shrink: 0;
+
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: #241103 !important;
+
+    background: linear-gradient(
+        135deg,
+        #ff8f05,
+        #f5c42c
+    ) !important;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.location-btn:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   CHARACTER COUNT
+   ========================================================= */
+
+.character-count {
+    margin-top: 5px;
+
+    text-align: right;
+
+    color: #7d7160 !important;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
+.submit-btn {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    color: #241103 !important;
+
+    background: linear-gradient(
+        135deg,
+        #ff8f05,
+        #f5c42c
+    ) !important;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.submit-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.secure-note {
+    margin-top: 13px;
+
+    text-align: center;
+
+    color: #7d7160 !important;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BACK SECTION
+   ========================================================= */
+
+.seva-back-section {
+    padding: 0 20px 100px !important;
+
+    background: #100702 !important;
+}
+
+
+/* =========================================================
+   REMOVE ANY ACCIDENTAL LIGHT BACKGROUNDS
+   ========================================================= */
+
+.seva-activity-hero *,
+.seva-goal-section *,
+.seva-history-section *,
+.seva-activity-form-section *,
+.seva-back-section * {
+    --bs-body-bg: #100702;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .seva-activity-header {
+        align-items: flex-start;
+    }
+
+    .seva-activity-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .seva-activity-info {
+        padding-top: 0;
+    }
+
+    .seva-history-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .seva-activity-hero {
+        padding: 110px 18px 55px !important;
+    }
+
+    .seva-activity-header {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .seva-activity-icon {
+        width: 76px;
+        height: 76px;
+
+        font-size: 36px;
+    }
+
+    .seva-activity-header h1 {
+        font-size: 46px;
+    }
+
+    .seva-goal-panel {
+        padding: 28px 22px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .seva-goal-points {
+        width: 100%;
+    }
+
+    .seva-activity-form-section .seva-form-card {
+        padding: 25px 20px;
+    }
+
+    .location-row {
+        flex-direction: column;
+    }
+
+    .location-btn {
+        width: 100%;
+    }
+
+    .seva-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
