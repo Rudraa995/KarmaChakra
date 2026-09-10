@@ -722,6 +722,20 @@ a {
   letter-spacing: .3px;
 }
 
+/* ---------- Seva domain page (reuses karma-detail / impact / karma-grid) ---------- */
+
+.impact-stats--3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.seva-catalog-section {
+  padding: 90px 20px 120px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
 /* ---------- Karma detail page ---------- */
 
 .karma-detail-section {

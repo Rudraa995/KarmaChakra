@@ -86,6 +86,80 @@ const COLLECTIVE_IMPACT = [
     { icon: "✨", value: "1,320", label: "Lives Touched" }
 ];
 
+// ---------- Seva Karma domain: activity catalog ----------
+// Each Seva activity has its own proof rules and three goal tiers
+// (beginner / intermediate / advanced), matching the PDF's Goal System.
+// This is the single source of truth for seva.html and, later, seva-log.html.
+const SEVA_ACTIVITIES = [{
+        id: "feed-hungry",
+        name: "Feed the Hungry",
+        icon: "🍲",
+        summary: "Distribute meals to people in need.",
+        basePoints: 80,
+        impactUnit: "people fed",
+        proofNote: "Photo of the meal distribution + how many people you fed.",
+        tiers: { beginner: 5, intermediate: 25, advanced: 100 }
+    },
+    {
+        id: "donate-essentials",
+        name: "Donate Essentials",
+        icon: "👕",
+        summary: "Give old clothes, blankets or books to those who need them.",
+        basePoints: 60,
+        impactUnit: "items donated",
+        proofNote: "Photo of the items before handover + how many items.",
+        tiers: { beginner: 5, intermediate: 20, advanced: 50 }
+    },
+    {
+        id: "elderly-care",
+        name: "Elderly Care Visit",
+        icon: "👵",
+        summary: "Spend time helping or checking in on elderly people.",
+        basePoints: 90,
+        impactUnit: "visits",
+        proofNote: "Photo from the visit + a short description.",
+        tiers: { beginner: 1, intermediate: 5, advanced: 15 }
+    },
+    {
+        id: "blood-camp-support",
+        name: "Blood Camp Support",
+        icon: "🩸",
+        summary: "Volunteer at (not just donate to) a blood donation camp.",
+        basePoints: 100,
+        impactUnit: "camps supported",
+        proofNote: "Photo at the camp + your role there.",
+        tiers: { beginner: 1, intermediate: 3, advanced: 10 }
+    },
+    {
+        id: "disaster-relief",
+        name: "Disaster Relief Support",
+        icon: "🚨",
+        summary: "Help with relief work after floods, fires or other disasters.",
+        basePoints: 150,
+        impactUnit: "relief efforts",
+        proofNote: "Photo of the relief work + location + description.",
+        tiers: { beginner: 1, intermediate: 3, advanced: 8 }
+    },
+    {
+        id: "teach-support",
+        name: "Community Teaching Support",
+        icon: "📚",
+        summary: "Teach or mentor underprivileged children or adults.",
+        basePoints: 70,
+        impactUnit: "hours taught",
+        proofNote: "Photo of the session + hours taught.",
+        tiers: { beginner: 2, intermediate: 10, advanced: 30 }
+    }
+];
+
+// Mock/demo user progress for the Seva domain only — this is NOT real data.
+// Replace this object with a real API response once the backend exists.
+const SEVA_USER_STATS = {
+    mudra: 320,
+    activitiesCompleted: 4,
+    tierLabel: "Seva Sevak · Tier 2"
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     initNavbar();
     initOrbitWheel();
@@ -93,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initImpactStats();
     initScrollReveal();
     initKarmaDetailPage();
+    initSevaPage();
 });
 
 // ---------- Navbar: mobile close + scrollspy + scrolled state ----------
@@ -238,7 +313,7 @@ function initKarmaDetailPage() {
     </div>
 
     <div class="hero-actions karma-detail-ctas">
-      <a href="plant-tree.html" class="btn kc-primary-btn">Log This Karma</a>
+      <a href="${domain.id === 'seva' ? 'seva.html' : 'plant-tree.html'}" class="btn kc-primary-btn">Log This Karma</a>
       <a href="index.html#karmas" class="btn kc-outline-btn">← Back to Karmas</a>
     </div>
   `;
@@ -253,5 +328,43 @@ function initKarmaDetailPage() {
           <h3 class="karma-card-title">${d.name}</h3>
         </a>
       `).join("");
+    }
+}
+
+// ---------- seva.html: summary strip + activity catalog ----------
+function initSevaPage() {
+    const summaryRow = document.querySelector("[data-seva-summary]");
+    const catalog = document.querySelector("[data-seva-catalog]");
+    if (!summaryRow && !catalog) return; // not on seva.html, skip
+
+    if (summaryRow) {
+        summaryRow.innerHTML = `
+      <div class="impact-stat">
+        <span class="impact-stat-icon">✺</span>
+        <div class="impact-stat-value">${SEVA_USER_STATS.mudra}</div>
+        <div class="impact-stat-label">Seva Mudrā Earned</div>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-stat-icon">🤝</span>
+        <div class="impact-stat-value">${SEVA_USER_STATS.activitiesCompleted}</div>
+        <div class="impact-stat-label">Seva Activities Completed</div>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-stat-icon">🏅</span>
+        <div class="impact-stat-value">${SEVA_USER_STATS.tierLabel}</div>
+        <div class="impact-stat-label">Current Standing</div>
+      </div>
+    `;
+    }
+
+    if (catalog) {
+        catalog.innerHTML = SEVA_ACTIVITIES.map(a => `
+      <a class="karma-card" href="seva-log.html?activity=${a.id}">
+        <span class="karma-card-icon tone-gold">${a.icon}</span>
+        <h3 class="karma-card-title">${a.name}</h3>
+        <p class="karma-card-subtitle">${a.summary}</p>
+        <p class="karma-card-action">Goal: ${a.tiers.beginner} ${a.impactUnit} · +${a.basePoints} Mudrā</p>
+      </a>
+    `).join("");
     }
 }
