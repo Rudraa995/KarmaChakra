@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prakriti Karma Dashboard | KarmChakra</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="plant-tree.css">
+</head>
+
+<body>
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+
+    <header class="top-navbar">
+
+        <div class="navbar-left">
+
+            <a href="karma.html?domain=prakriti" class="brand">
+
+                <div class="brand-logo">
+                    ◉
+                </div>
+
+                <span>KarmChakra</span>
+
+            </a>
+
+        </div>
+
+
+        <nav class="top-navigation">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="karma.html?domain=prakriti" class="active">
+                Karmas
+            </a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="leaderboard.html">Leaderboard</a>
+
+            <a href="karma-guru.html">Karma Guru</a>
+
+        </nav>
+
+
+        <button class="join-button">
+            Join
+        </button>
+
+    </header>
+
+
+
+    <!-- ================================
+         MOBILE MENU BUTTON
+    ================================= -->
+
+    <button class="mobile-menu-button" id="mobileMenu">
+        ☰
+    </button>
+
+
+
+    <!-- ================================
+         SIDEBAR
+    ================================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Sidebar Header -->
+
+        <div class="sidebar-header">
+
+            <div class="sidebar-title">
+                Prakriti
+            </div>
+
+            <div class="sidebar-subtitle">
+                Karma Dashboard
+            </div>
+
+        </div>
+
+
+        <!-- Sidebar Navigation -->
+
+        <div class="sidebar-navigation">
+
+
+            <!-- Plant Tree -->
+
+            <button class="sidebar-item active" data-section="plant-tree">
+
+                <span class="sidebar-icon">
+                    🌱
+                </span>
+
+                <span>
+                    Plant Tree
+                </span>
+
+            </button>
+
+
+            <!-- Monthly Challenges -->
+
+            <button class="sidebar-item" data-section="monthly-challenges">
+
+                <span class="sidebar-icon">
+                    🏆
+                </span>
+
+                <span>
+                    Monthly Challenges
+                </span>
+
+            </button>
+
+
+            <!-- AR Zone -->
+
+            <button class="sidebar-item" data-section="ar-zone">
+
+                <span class="sidebar-icon">
+                    📱
+                </span>
+
+                <span>
+                    AR Zone
+                </span>
+
+            </button>
+
+
+            <!-- Emergency -->
+
+            <button class="sidebar-item" data-section="emergency">
+
+                <span class="sidebar-icon">
+                    🚨
+                </span>
+
+                <span>
+                    Emergency
+                </span>
+
+            </button>
+
+
+            <!-- Rewards -->
+
+            <button class="sidebar-item" data-section="rewards">
+
+                <span class="sidebar-icon">
+                    🎁
+                </span>
+
+                <span>
+                    Rewards
+                </span>
+
+            </button>
+
+
+            <!-- Competitions -->
+
+            <button class="sidebar-item" data-section="competitions">
+
+                <span class="sidebar-icon">
+                    🎓
+                </span>
+
+                <span>
+                    Competitions
+                </span>
+
+            </button>
+
+
+            <!-- Notifications -->
+
+            <button class="sidebar-item" data-section="notifications">
+
+                <span class="sidebar-icon">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+                <span class="notification-count">
+                    3
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Sidebar Bottom -->
+
+        <div class="sidebar-bottom">
+
+            <div class="karma-score">
+
+                <div class="karma-score-title">
+                    Karma Score
+                </div>
+
+                <div class="karma-score-number">
+                    1,240
+                    <span>pts</span>
+                </div>
+
+                <div class="karma-progress">
+
+                    <div class="karma-progress-fill"></div>
+
+                </div>
+
+                <div class="karma-level">
+                    Level 7 · Prakriti Guardian
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================================
+         SIDEBAR OVERLAY
+    ================================= -->
+
+    <div class="sidebar-overlay" id="sidebarOverlay">
+    </div>
+
+
+
+    <!-- ================================
+         MAIN CONTENT
+    ================================= -->
+
+    <main class="main-content">
+
+
+        <!-- Page Heading -->
+
+        <div class="page-heading">
+
+            <a href="karma.html?domain=prakriti" class="back-link">
+
+                ← Back to Prakriti Karma
+
+            </a>
+
+
+            <div class="heading-content">
+
+                <span class="heading-kicker">
+                    PRAKRITI KARMA
+                </span>
+
+                <h1 id="pageTitle">
+                    Plant a Tree
+                </h1>
+
+                <p id="pageDescription">
+                    Upload a photo and let our AI verify your contribution.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             CONTENT AREA
+        ================================= -->
+
+        <!-- ================= PLANT TREE CONTENT ================= -->
+
+        <section class="plant-tree-section">
+
+            <div class="plant-tree-header"> </div>
+
+
+            <div class="plant-tree-card">
+
+                <form id="treeForm">
+
+                    <!-- PHOTO -->
+
+                    <div class="form-section">
+
+                        <label class="form-label">
+                    <span>1.</span> Upload Tree Photo
+                </label>
+
+                        <p class="form-help">
+                            Upload a clear photo showing the tree you planted.
+                        </p>
+
+                        <label for="treePhoto" class="upload-box" id="uploadBox">
+
+                    <div class="upload-icon">📷</div>
+
+                    <div class="upload-title">
+                        Select a Photo
+                    </div>
+
+                    <div class="upload-subtitle">
+                        JPG, JPEG or PNG · Max 10 MB
+                    </div>
+
+                    <input
+                        type="file"
+                        id="treePhoto"
+                        accept="image/jpeg,image/png,image/jpg"
+                        hidden
+                        required
+                    >
+
+                </label>
+
+
+                        <!-- PHOTO PREVIEW -->
+
+                        <div id="photoPreviewContainer" class="photo-preview-container">
+
+                            <img id="photoPreview" src="" alt="Tree preview">
+
+                            <button type="button" id="removePhoto" class="remove-photo">
+
+                        ×
+
+                    </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TREE NAME -->
+
+                    <div class="form-section">
+
+                        <label for="treeName" class="form-label">
+                    <span>2.</span> Tree Name
+                </label>
+
+                        <p class="form-help">
+                            What type of tree did you plant?
+                        </p>
+
+                        <input type="text" id="treeName" class="tree-input" placeholder="e.g. Neem, Banyan, Mango" required>
+
+                    </div>
+
+
+                    <!-- GPS LOCATION -->
+
+                    <div class="form-section">
+
+                        <label class="form-label">
+                    <span>3.</span> GPS Location
+                </label>
+
+                        <p class="form-help">
+                            Tell us where the tree was planted.
+                        </p>
+
+                        <div class="location-row">
+
+                            <input type="text" id="location" class="tree-input" placeholder="Your planting location" readonly required>
+
+                            <button type="button" id="getLocation" class="location-btn">
+
+                        📍 Get Location
+
+                    </button>
+
+                        </div>
+
+                        <div id="locationStatus" class="location-status">
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-section">
+
+                        <label for="description" class="form-label">
+                    <span>4.</span> Describe Your Contribution
+                </label>
+
+                        <p class="form-help">
+                            Tell us a little about your tree planting activity.
+                        </p>
+
+                        <textarea id="description" class="tree-input tree-textarea" maxlength="500" rows="5" placeholder="Example: I planted a Neem tree near our community garden to provide shade and improve the local environment." required></textarea>
+
+                        <div class="character-count">
+                            <span id="charCount">0</span> / 500
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI VERIFICATION -->
+
+                    <div class="verification-info">
+
+                        <div class="verification-icon">
+                            ✨
+                        </div>
+
+                        <div>
+
+                            <h3>AI Verification</h3>
+
+                            <p>
+                                Our Karma AI will analyze your photo, location and contribution details to verify your Karma.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button type="submit" id="submitBtn" class="submit-btn">
+
+                <span id="submitText">
+                    Submit for Verification
+                </span>
+
+                <span
+                    id="submitLoader"
+                    class="submit-loader">
+
+                    ⟳
+
+                </span>
+
+            </button>
+
+                    <p class="secure-note">
+                        🔒 Your submission is securely processed for Karma verification.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUCCESS POPUP ================= -->
+
+        <div class="success-overlay" id="successOverlay">
+
+            <div class="success-card">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <span class="section-kicker">
+            SUBMISSION RECEIVED
+        </span>
+
+                <h2>Karma Submitted!</h2>
+
+                <p>
+                    Your tree planting contribution has been submitted for AI verification.
+                </p>
+
+                <div class="verification-points">
+
+                    <span>🌱</span>
+
+                    <strong>+100 Mudrā</strong>
+
+                    <small>Pending verification</small>
+
+                </div>
+
+                <button type="button" class="dashboard-btn" id="closeSuccess">
+
+            Continue
+
+        </button>
+
+            </div>
+
+        </div>
+        <!-- ==========================
+                 MONTHLY CHALLENGES
+            =========================== -->
+
+        <div class="dashboard-section" id="monthly-challenges">
+
+            <div class="section-title">
+
+                <span class="section-icon">
+                        🏆
+                    </span>
+
+                <div>
+
+                    <h2>
+                        Monthly Challenges
+                    </h2>
+
+                    <p>
+                        Take on environmental missions and earn Karma points.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="placeholder-grid">
+
+                <div class="placeholder-card">
+
+                    <span>🌱</span>
+
+                    <h3>
+                        Plant Trees
+                    </h3>
+
+                    <p>
+                        Complete monthly plantation activities.
+                    </p>
+
+                </div>
+
+
+                <div class="placeholder-card">
+
+                    <span>♻️</span>
+
+                    <h3>
+                        Reduce Plastic
+                    </h3>
+
+                    <p>
+                        Complete zero-plastic activities.
+                    </p>
+
+                </div>
+
+
+                <div class="placeholder-card">
+
+                    <span>💧</span>
+
+                    <h3>
+                        Save Water
+                    </h3>
+
+                    <p>
+                        Reduce daily water consumption.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================
+                 AR ZONE
+            =========================== -->
+
+        <div class="dashboard-section" id="ar-zone">
+
+            <div class="section-title">
+
+                <span class="section-icon">
+                        📱
+                    </span>
+
+                <div>
+
+                    <h2>
+                        AR Zone
+                    </h2>
+
+                    <p>
+                        Visualize how your planted tree can grow over the years.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ar-placeholder">
+
+                <div class="ar-icon">
+                    🌳
+                </div>
+
+                <h2>
+                    Your Tree's Future
+                </h2>
+
+                <p>
+                    Upload your planted tree photo and visualize its future growth with AI.
+                </p>
+
+                <button class="primary-button">
+                        Explore AR Zone
+                    </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================
+                 EMERGENCY
+            =========================== -->
+
+        <div class="dashboard-section" id="emergency">
+
+            <div class="section-title">
+
+                <span class="section-icon">
+                        🚨
+                    </span>
+
+                <div>
+
+                    <h2>
+                        Emergency Reporting
+                    </h2>
+
+                    <p>
+                        Report environmental incidents and help protect nature.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="emergency-grid">
+
+                <div class="emergency-card">
+
+                    <span>
+                            🌳
+                        </span>
+
+                    <h3>
+                        Illegal Cutting
+                    </h3>
+
+                </div>
+
+
+                <div class="emergency-card">
+
+                    <span>
+                            🔥
+                        </span>
+
+                    <h3>
+                        Forest Fire
+                    </h3>
+
+                </div>
+
+
+                <div class="emergency-card">
+
+                    <span>
+                            ⚠️
+                        </span>
+
+                    <h3>
+                        Pollution
+                    </h3>
+
+                </div>
+
+
+                <div class="emergency-card">
+
+                    <span>
+                            💧
+                        </span>
+
+                    <h3>
+                        Water Leakage
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================
+                 REWARDS
+            =========================== -->
+
+        <div class="dashboard-section" id="rewards">
+
+            <div class="section-title">
+
+                <span class="section-icon">
+                        🎁
+                    </span>
+
+                <div>
+
+                    <h2>
+                        Rewards
+                    </h2>
+
+                    <p>
+                        Your environmental actions unlock exciting rewards.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="rewards-preview">
+
+                <div class="reward-preview-card">
+
+                    <span class="reward-icon">
+                            🌱
+                        </span>
+
+                    <h3>
+                        10 Trees Planted
+                    </h3>
+
+                    <p>
+                        Get 10% discount on selected eco-friendly products.
+                    </p>
+
+                </div>
+
+
+                <div class="reward-preview-card">
+
+                    <span class="reward-icon">
+                            🌳
+                        </span>
+
+                    <h3>
+                        25 Trees Planted
+                    </h3>
+
+                    <p>
+                        Unlock a 15% eco-store discount.
+                    </p>
+
+                </div>
+
+
+                <div class="reward-preview-card">
+
+                    <span class="reward-icon">
+                            🏆
+                        </span>
+
+                    <h3>
+                        Eco Champion
+                    </h3>
+
+                    <p>
+                        Unlock your exclusive Karma badge.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================
+                 COMPETITIONS
+            =========================== -->
+
+        <div class="dashboard-section" id="competitions">
+
+            <div class="section-title">
+
+                <span class="section-icon">
+                        🎓
+                    </span>
+
+                <div>
+
+                    <h2>
+                        School & College Competitions
+                    </h2>
+
+                    <p>
+                        Represent your campus and climb the environmental rankings.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="competition-grid">
+
+                <!-- Colleges -->
+
+                <div class="competition-card">
+
+                    <h3>
+                        🏫 Top Colleges
+                    </h3>
+
+
+                    <div class="ranking-row">
+
+                        <span>#1</span>
+
+                        <strong>
+                                SCET
+                            </strong>
+
+                        <b>
+                                4,230
+                            </b>
+
+                    </div>
+
+
+                    <div class="ranking-row">
+
+                        <span>#2</span>
+
+                        <strong>
+                                SVNIT
+                            </strong>
+
+                        <b>
+                                3,910
+                            </b>
+
+                    </div>
+
+
+                    <div class="ranking-row">
+
+                        <span>#3</span>
+
+                        <strong>
+                                PDEU
+                            </strong>
+
+                        <b>
+                                3,540
+                            </b>
+
+                    </div>
+
+
+                    <div class="ranking-row">
+
+                        <span>#4</span>
+
+                        <strong>
+                                NIT Surat
+                            </strong>
+
+                        <b>
+                                3,220
+                            </b>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Schools -->
+
+                <div class="competition-card">
+
+                    <h3>
+                        🏫 Top Schools
+                    </h3>
+
+
+                    <div class="ranking-row">
+
+                        <span>#1</span>
+
+                        <strong>
+                                DPS Surat
+                            </strong>
+
+                        <b>
+                                1,840
+                            </b>
+
+                    </div>
+
+
+                    <div class="ranking-row">
+
+                        <span>#2</span>
+
+                        <strong>
+                                St. Xavier's
+                            </strong>
+
+                        <b>
+                                1,620
+                            </b>
+
+                    </div>
+
+
+                    <div class="ranking-row">
+
+                        <span>#3</span>
+
+                        <strong>
+                                Ryan Intl.
+                            </strong>
+
+                        <b>
+                                1,490
+                            </b>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================
+                 NOTIFICATIONS
+            =========================== -->
+
+        <div class="dashboard-section" id="notifications">
+
+            <div class="section-title">
+
+                <span class="section-icon">
+                        🔔
+                    </span>
+
+                <div>
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        Stay updated with your Karma activities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notification-list">
+
+
+                <div class="notification unread">
+
+                    <div class="notification-icon">
+                        🌱
+                    </div>
+
+                    <div>
+
+                        <strong>
+                                Tree Verified
+                            </strong>
+
+                        <p>
+                            Your recent tree plantation has been verified successfully.
+                        </p>
+
+                        <small>
+                                10 minutes ago
+                            </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notification unread">
+
+                    <div class="notification-icon">
+                        🏆
+                    </div>
+
+                    <div>
+
+                        <strong>
+                                New Challenge Available
+                            </strong>
+
+                        <p>
+                            A new monthly environmental challenge has arrived.
+                        </p>
+
+                        <small>
+                                2 hours ago
+                            </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notification unread">
+
+                    <div class="notification-icon">
+                        🎁
+                    </div>
+
+                    <div>
+
+                        <strong>
+                                New Reward Added
+                            </strong>
+
+                        <p>
+                            You have a new reward waiting to be unlocked.
+                        </p>
+
+                        <small>
+                                Yesterday
+                            </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="plant-tree.js"></script>
+
+</body>
+
+</html>
