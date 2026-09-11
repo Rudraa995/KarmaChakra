@@ -1,7 +1,3 @@
-/* ================================
-   KarmChakra Home Page
-   ================================ */
-
 :root {
     --bg: #100702;
     --bg-soft: #1b0b03;
@@ -18,22 +14,21 @@
     --radius-lg: 22px;
     --radius-md: 16px;
     --ease: cubic-bezier(.22, .8, .3, 1);
-    /* Karma domain tones */
     --tone-green: 84, 163, 96;
     --tone-gold: 217, 152, 18;
     --tone-teal: 39, 141, 137;
     --tone-blue: 55, 116, 199;
     --tone-purple: 121, 87, 176;
     --tone-rose: 196, 63, 92;
-    --tone-indigo: 71, 82, 158;
+    --tone-indigo: 71, 82, 158
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth
 }
 
 body {
@@ -41,59 +36,53 @@ body {
     background: var(--bg);
     color: var(--cream);
     font-family: "Inter", sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden
 }
 
 h1,
 h2,
 h3 {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none
 }
-
-
-/* ---------- Scroll reveal ---------- */
 
 [data-reveal] {
     opacity: 0;
     transform: translateY(22px);
-    transition: opacity .7s var(--ease), transform .7s var(--ease);
+    transition: opacity .7s var(--ease), transform .7s var(--ease)
 }
 
 [data-reveal].is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0)
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
     [data-reveal] {
         opacity: 1;
         transform: none;
-        transition: none;
+        transition: none
     }
 }
-
-
-/* ---------- Navbar ---------- */
 
 .kc-navbar {
     min-height: 84px;
     background: transparent;
     border-bottom: 1px solid transparent;
-    transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+    transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease
 }
 
 .kc-navbar--scrolled {
     background: rgba(14, 7, 2, 0.92);
     border-bottom: 1px solid rgba(218, 154, 26, 0.14);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px)
 }
 
 .kc-container {
-    max-width: 1580px;
+    max-width: 1580px
 }
 
 .kc-brand {
@@ -104,14 +93,14 @@ a {
     font-family: "Cormorant Garamond", serif;
     font-size: 27px;
     font-weight: 600;
-    letter-spacing: .2px;
+    letter-spacing: .2px
 }
 
 .brand-symbol {
     width: 32px;
     height: 32px;
     color: #c8902a;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .nav-link {
@@ -119,17 +108,17 @@ a {
     font-size: 14px;
     font-weight: 500;
     padding: 11px 16px !important;
-    transition: color .25s ease, background .25s ease;
+    transition: color .25s ease, background .25s ease
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: #f4bd32 !important;
+    color: #f4bd32 !important
 }
 
 .nav-link.active {
     background: rgba(139, 79, 13, .26);
-    border-radius: 24px;
+    border-radius: 24px
 }
 
 .kc-join-btn {
@@ -141,24 +130,21 @@ a {
     font-weight: 700;
     background: linear-gradient(135deg, #ff970b, #f6bf2e);
     box-shadow: 0 7px 25px rgba(255, 145, 8, .18);
-    transition: transform .25s ease, box-shadow .25s ease;
+    transition: transform .25s ease, box-shadow .25s ease
 }
 
 .kc-join-btn:hover {
     color: #201003;
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(255, 145, 8, .28);
+    box-shadow: 0 10px 28px rgba(255, 145, 8, .28)
 }
-
-
-/* ---------- Hero ---------- */
 
 .hero-section {
     position: relative;
     min-height: 100vh;
     padding-top: 84px;
     overflow: hidden;
-    background: radial-gradient(circle at 76% 45%, rgba(132, 67, 7, .28), transparent 32%), radial-gradient(circle at 32% 34%, rgba(106, 43, 6, .18), transparent 34%), linear-gradient(110deg, #110702 0%, #1b0b03 45%, #170a03 100%);
+    background: radial-gradient(circle at 76% 45%, rgba(132, 67, 7, .28), transparent 32%), radial-gradient(circle at 32% 34%, rgba(106, 43, 6, .18), transparent 34%), linear-gradient(110deg, #110702 0%, #1b0b03 45%, #170a03 100%)
 }
 
 .hero-section::before {
@@ -166,7 +152,7 @@ a {
     position: absolute;
     inset: 84px 0 0;
     pointer-events: none;
-    background: linear-gradient(90deg, rgba(0, 0, 0, .16), transparent 42%), radial-gradient(circle at 75% 49%, rgba(255, 170, 31, .08), transparent 25%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, .16), transparent 42%), radial-gradient(circle at 75% 49%, rgba(255, 170, 31, .08), transparent 25%)
 }
 
 .hero-glow {
@@ -178,7 +164,7 @@ a {
     border-radius: 50%;
     background: rgba(210, 123, 11, .08);
     filter: blur(80px);
-    pointer-events: none;
+    pointer-events: none
 }
 
 .hero-content {
@@ -186,12 +172,12 @@ a {
     z-index: 2;
     min-height: calc(100vh - 84px);
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
 .hero-copy {
     padding-top: 5px;
-    padding-bottom: 45px;
+    padding-bottom: 45px
 }
 
 .eyebrow {
@@ -206,12 +192,12 @@ a {
     background: rgba(45, 23, 5, .36);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 3px
 }
 
 .eyebrow span:first-child {
     font-size: 16px;
-    letter-spacing: 0;
+    letter-spacing: 0
 }
 
 .hero-copy h1 {
@@ -220,14 +206,14 @@ a {
     font-size: clamp(72px, 6.2vw, 108px);
     line-height: .86;
     font-weight: 500;
-    letter-spacing: -2px;
+    letter-spacing: -2px
 }
 
 .hero-copy h1 span {
     background: linear-gradient(135deg, #ffb236, #ff8a05);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: transparent
 }
 
 .hero-copy h2 {
@@ -236,7 +222,7 @@ a {
     color: #f4e7d0;
     font-size: clamp(28px, 2.3vw, 42px);
     line-height: 1.12;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .hero-description {
@@ -244,14 +230,14 @@ a {
     margin: 0;
     color: #bdb09c;
     font-size: 16px;
-    line-height: 1.72;
+    line-height: 1.72
 }
 
 .hero-actions {
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
-    margin-top: 32px;
+    margin-top: 32px
 }
 
 .kc-primary-btn,
@@ -261,49 +247,49 @@ a {
     border-radius: 30px;
     font-size: 15px;
     font-weight: 700;
-    transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease
 }
 
 .kc-primary-btn {
     color: #241103;
     border: 0;
     background: linear-gradient(135deg, #ff8f05, #f5c42c);
-    box-shadow: 0 13px 32px rgba(255, 142, 7, .17);
+    box-shadow: 0 13px 32px rgba(255, 142, 7, .17)
 }
 
 .kc-outline-btn {
     color: #dfab29;
     border: 1px solid #a9720b;
-    background: transparent;
+    background: transparent
 }
 
 .kc-primary-btn:hover,
 .kc-outline-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px)
 }
 
 .kc-primary-btn:hover {
     color: #241103;
-    box-shadow: 0 17px 40px rgba(255, 142, 7, .27);
+    box-shadow: 0 17px 40px rgba(255, 142, 7, .27)
 }
 
 .kc-outline-btn:hover {
     color: #ffd35e;
     border-color: #d39a20;
-    background: rgba(188, 116, 10, .08);
+    background: rgba(188, 116, 10, .08)
 }
 
 .hero-stats {
     display: flex;
     gap: 62px;
-    margin-top: 47px;
+    margin-top: 47px
 }
 
 .stat-number {
     color: #e9d39b;
     font-family: "Cormorant Garamond", serif;
     font-size: 30px;
-    line-height: 1;
+    line-height: 1
 }
 
 .stat-label {
@@ -311,18 +297,15 @@ a {
     color: #a99b86;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 2px
 }
-
-
-/* ---------- Hero Chakra Wheel (interactive) ---------- */
 
 .hero-art-wrap {
     min-height: 720px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center
 }
 
 .chakra-hint {
@@ -332,7 +315,7 @@ a {
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: .8;
+    opacity: .8
 }
 
 .hero-art {
@@ -341,11 +324,8 @@ a {
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center
 }
-
-
-/* Decorative rotating mandala, clipped to a perfect circle */
 
 .chakra-core-clip {
     position: absolute;
@@ -354,7 +334,7 @@ a {
     height: 58%;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 45px rgba(237, 150, 23, .16);
+    box-shadow: 0 0 45px rgba(237, 150, 23, .16)
 }
 
 .chakra-core-img {
@@ -362,24 +342,20 @@ a {
     height: 100%;
     object-fit: cover;
     display: block;
-    animation: spinWheel 70s linear infinite;
+    animation: spinWheel 70s linear infinite
 }
 
 @keyframes spinWheel {
     to {
-        transform: rotate(360deg);
+        transform: rotate(360deg)
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
     .chakra-core-img {
-        animation: none;
+        animation: none
     }
 }
-
-
-/* Static center readout, layered above the spinning image so the text
-   never rotates out of legibility. */
 
 .chakra-center {
     position: absolute;
@@ -395,20 +371,20 @@ a {
     gap: 2px;
     background: radial-gradient(circle at 40% 30%, #6b4315, #3a2308 78%);
     box-shadow: inset 0 0 0 1px rgba(255, 200, 110, .35), 0 0 30px rgba(0, 0, 0, .35);
-    pointer-events: none;
+    pointer-events: none
 }
 
 .chakra-center-symbol {
     color: rgba(244, 224, 180, .55);
     font-size: clamp(14px, 1.6vw, 20px);
-    margin-bottom: 4px;
+    margin-bottom: 4px
 }
 
 .chakra-center-number {
     font-family: "Cormorant Garamond", serif;
     color: #f1d999;
     font-size: clamp(20px, 2.6vw, 34px);
-    line-height: 1;
+    line-height: 1
 }
 
 .chakra-center-label {
@@ -416,44 +392,40 @@ a {
     color: #dcc182;
     font-size: clamp(8px, .9vw, 11px);
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 2px
 }
 
 .chakra-center-level {
     margin-top: 4px;
     color: #f4bd32;
     font-size: clamp(9px, 1vw, 12px);
-    font-weight: 600;
+    font-weight: 600
 }
 
 .art-ring {
     position: absolute;
     z-index: 1;
     border-radius: 50%;
-    pointer-events: none;
+    pointer-events: none
 }
 
 .ring-one {
     width: 92%;
     height: 92%;
     border: 1px solid rgba(205, 145, 24, .40);
-    box-shadow: 0 0 35px rgba(221, 149, 18, .08);
+    box-shadow: 0 0 35px rgba(221, 149, 18, .08)
 }
 
 .ring-two {
     width: 82%;
     height: 82%;
-    border: 1px dashed rgba(205, 145, 24, .28);
+    border: 1px dashed rgba(205, 145, 24, .28)
 }
-
-
-/* Orbit badges — fixed clickable positions around the wheel, evenly
-   spaced at 360/7 degree intervals starting from the top. */
 
 .orbit-track {
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 3
 }
 
 .orbit-badge {
@@ -464,47 +436,47 @@ a {
     gap: 8px;
     width: 108px;
     transform: translate(-50%, -50%);
-    transition: transform .3s var(--ease);
+    transition: transform .3s var(--ease)
 }
 
 .orbit-badge:nth-child(1) {
     top: 6%;
-    left: 50%;
+    left: 50%
 }
 
 .orbit-badge:nth-child(2) {
     top: 22.6%;
-    left: 84.4%;
+    left: 84.4%
 }
 
 .orbit-badge:nth-child(3) {
     top: 59.8%;
-    left: 92.9%;
+    left: 92.9%
 }
 
 .orbit-badge:nth-child(4) {
     top: 89.6%;
-    left: 69.1%;
+    left: 69.1%
 }
 
 .orbit-badge:nth-child(5) {
     top: 89.6%;
-    left: 30.9%;
+    left: 30.9%
 }
 
 .orbit-badge:nth-child(6) {
     top: 59.8%;
-    left: 7.1%;
+    left: 7.1%
 }
 
 .orbit-badge:nth-child(7) {
     top: 22.6%;
-    left: 15.6%;
+    left: 15.6%
 }
 
 .orbit-badge:hover,
 .orbit-badge:focus-visible {
-    transform: translate(-50%, -50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.08)
 }
 
 .orbit-badge-circle {
@@ -517,12 +489,12 @@ a {
     font-size: 22px;
     background: rgba(var(--tone-rgb, var(--tone-gold)), .28);
     box-shadow: 0 0 0 1px rgba(var(--tone-rgb, var(--tone-gold)), .5), 0 10px 24px rgba(0, 0, 0, .35);
-    transition: box-shadow .3s ease;
+    transition: box-shadow .3s ease
 }
 
 .orbit-badge:hover .orbit-badge-circle,
 .orbit-badge:focus-visible .orbit-badge-circle {
-    box-shadow: 0 0 0 2px rgba(var(--tone-rgb, var(--tone-gold)), .8), 0 0 26px rgba(var(--tone-rgb, var(--tone-gold)), .45);
+    box-shadow: 0 0 0 2px rgba(var(--tone-rgb, var(--tone-gold)), .8), 0 0 26px rgba(var(--tone-rgb, var(--tone-gold)), .45)
 }
 
 .orbit-badge-label {
@@ -530,67 +502,61 @@ a {
     font-size: 11.5px;
     font-weight: 600;
     text-align: center;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, .7);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .7)
 }
 
-
-/* Tone color mapping, shared by orbit badges + karma cards + detail icon */
-
 .tone-green {
-    --tone-rgb: var(--tone-green);
+    --tone-rgb: var(--tone-green)
 }
 
 .tone-gold {
-    --tone-rgb: var(--tone-gold);
+    --tone-rgb: var(--tone-gold)
 }
 
 .tone-teal {
-    --tone-rgb: var(--tone-teal);
+    --tone-rgb: var(--tone-teal)
 }
 
 .tone-blue {
-    --tone-rgb: var(--tone-blue);
+    --tone-rgb: var(--tone-blue)
 }
 
 .tone-purple {
-    --tone-rgb: var(--tone-purple);
+    --tone-rgb: var(--tone-purple)
 }
 
 .tone-rose {
-    --tone-rgb: var(--tone-rose);
+    --tone-rgb: var(--tone-rose)
 }
 
 .tone-indigo {
-    --tone-rgb: var(--tone-indigo);
+    --tone-rgb: var(--tone-indigo)
 }
-
-
-/* ---------- Section heading (shared) ---------- */
 
 .section-heading {
     max-width: 640px;
     margin: 0 auto 56px;
-    text-align: center;
+    text-align: center
 }
 
 .section-kicker {
     color: #d9a52a;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 3px
 }
 
 .section-heading h2 {
     margin: 14px 0 12px;
     font-size: clamp(34px, 4vw, 50px);
     color: #edcf91;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .section-heading p {
     margin: 0;
     color: #a99b86;
-    font-size: 16px;
+    font-size: 16px
 }
 
 .heading-divider {
@@ -598,17 +564,14 @@ a {
     width: 64px;
     height: 2px;
     margin: 24px auto 0;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--gold), transparent)
 }
-
-
-/* ---------- Seven Karmas grid ---------- */
 
 .karmas-section {
     position: relative;
     padding: 130px 20px 120px;
     background: var(--bg);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border)
 }
 
 .karma-grid {
@@ -616,7 +579,7 @@ a {
     grid-template-columns: repeat(3, 1fr);
     gap: 26px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .karma-card {
@@ -625,14 +588,14 @@ a {
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     background: var(--card-bg);
-    transition: transform .3s var(--ease), border-color .3s ease, background .3s ease;
+    transition: transform .3s var(--ease), border-color .3s ease, background .3s ease
 }
 
 .karma-card:hover,
 .karma-card:focus-visible {
     transform: translateY(-6px);
     border-color: var(--border-strong);
-    background: rgba(255, 208, 128, 0.06);
+    background: rgba(255, 208, 128, 0.06)
 }
 
 .karma-card-icon {
@@ -645,20 +608,20 @@ a {
     border-radius: 50%;
     font-size: 24px;
     background: rgba(var(--tone-rgb, var(--tone-gold)), .28);
-    box-shadow: 0 0 0 1px rgba(var(--tone-rgb, var(--tone-gold)), .45);
+    box-shadow: 0 0 0 1px rgba(var(--tone-rgb, var(--tone-gold)), .45)
 }
 
 .karma-card-title {
     margin: 0 0 6px;
     color: #f2e2bd;
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .karma-card-subtitle {
     margin: 0 0 16px;
     color: #a99b86;
-    font-size: 14px;
+    font-size: 14px
 }
 
 .karma-card-action {
@@ -667,15 +630,12 @@ a {
     border-top: 1px solid var(--border);
     color: #dca92e;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 600
 }
-
-
-/* ---------- Collective Impact ---------- */
 
 .impact-section {
     padding: 0 20px 130px;
-    background: var(--bg);
+    background: var(--bg)
 }
 
 .impact-panel {
@@ -685,33 +645,33 @@ a {
     text-align: center;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, rgba(217, 152, 18, .05), transparent 60%);
+    background: linear-gradient(180deg, rgba(217, 152, 18, .05), transparent 60%)
 }
 
 .impact-panel h2 {
     margin: 0 0 40px;
     font-size: clamp(30px, 3.6vw, 42px);
     color: #edcf91;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .impact-stats {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 24px;
+    gap: 24px
 }
 
 .impact-stat-icon {
     display: block;
     font-size: 26px;
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
 
 .impact-stat-value {
     font-family: "Cormorant Garamond", serif;
     color: #f1d999;
     font-size: clamp(22px, 2.2vw, 30px);
-    line-height: 1;
+    line-height: 1
 }
 
 .impact-stat-label {
@@ -720,11 +680,8 @@ a {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1.5px;
-    text-transform: uppercase;
+    text-transform: uppercase
 }
-
-
-/* ---------- Placeholder sections ---------- */
 
 .dummy-section {
     min-height: 60vh;
@@ -732,43 +689,40 @@ a {
     display: flex;
     align-items: center;
     background: var(--bg);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border)
 }
 
 .dummy-section:nth-of-type(even) {
-    background: var(--bg-alt);
+    background: var(--bg-alt)
 }
 
 .dummy-section h2 {
     margin: 14px 0;
     font-size: clamp(45px, 5vw, 75px);
-    color: #edcf91;
+    color: #edcf91
 }
 
 .dummy-section p {
     color: #a99b86;
-    font-size: 17px;
+    font-size: 17px
 }
 
 .join-section {
-    min-height: 42vh;
+    min-height: 42vh
 }
-
-
-/* ---------- Footer ---------- */
 
 .kc-footer {
     padding: 64px 20px 46px;
     text-align: center;
     background: var(--bg);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border)
 }
 
 .footer-symbol {
     display: inline-block;
     margin-bottom: 18px;
     color: #c8902a;
-    font-size: 26px;
+    font-size: 26px
 }
 
 .footer-tagline {
@@ -776,38 +730,32 @@ a {
     font-family: "Cormorant Garamond", serif;
     color: #f2e2bd;
     font-size: clamp(20px, 2.4vw, 28px);
-    font-weight: 600;
+    font-weight: 600
 }
 
 .footer-caption {
     margin: 0;
     color: #7d7160;
     font-size: 13px;
-    letter-spacing: .3px;
+    letter-spacing: .3px
 }
-
-
-/* ---------- Seva domain page (reuses karma-detail / impact / karma-grid) ---------- */
 
 .impact-stats--3 {
     grid-template-columns: repeat(3, 1fr);
     max-width: 720px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .seva-catalog-section {
     padding: 90px 20px 120px;
     background: var(--bg);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border)
 }
-
-
-/* ---------- Karma detail page ---------- */
 
 .karma-detail-section {
     padding: 150px 20px 60px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .karma-detail-card {
@@ -817,7 +765,7 @@ a {
     text-align: center;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    background: var(--card-bg);
+    background: var(--card-bg)
 }
 
 .karma-detail-icon {
@@ -830,14 +778,14 @@ a {
     border-radius: 50%;
     font-size: 32px;
     background: rgba(var(--tone-rgb, var(--tone-gold)), .28);
-    box-shadow: 0 0 0 1px rgba(var(--tone-rgb, var(--tone-gold)), .5);
+    box-shadow: 0 0 0 1px rgba(var(--tone-rgb, var(--tone-gold)), .5)
 }
 
 .karma-detail-card h1 {
     margin: 14px 0 18px;
     font-size: clamp(34px, 4.2vw, 48px);
     color: #efd49c;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .karma-detail-description {
@@ -845,7 +793,7 @@ a {
     margin: 0 auto 32px;
     color: #bdb09c;
     font-size: 16px;
-    line-height: 1.72;
+    line-height: 1.72
 }
 
 .karma-detail-action {
@@ -857,7 +805,7 @@ a {
     max-width: 360px;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    background: rgba(0, 0, 0, .15);
+    background: rgba(0, 0, 0, .15)
 }
 
 .karma-detail-action-label {
@@ -865,195 +813,189 @@ a {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    text-transform: uppercase
 }
 
 .karma-detail-action-value {
     color: #f2e2bd;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .karma-detail-action-points {
     color: #dca92e;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .karma-detail-ctas {
-    justify-content: center;
+    justify-content: center
 }
 
 .karma-grid--compact {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr)
 }
 
 .karma-card--compact {
     padding: 22px 14px;
-    text-align: center;
+    text-align: center
 }
 
 .karma-card--compact .karma-card-icon {
-    margin: 0 auto 14px;
+    margin: 0 auto 14px
 }
 
 .karma-card--compact .karma-card-title {
-    font-size: 15px;
+    font-size: 15px
 }
 
-
-/* ---------- Responsive ---------- */
-
-@media (max-width: 1199px) {
+@media (max-width:1199px) {
     .hero-copy h1 {
-        font-size: 82px;
+        font-size: 82px
     }
     .hero-stats {
-        gap: 32px;
+        gap: 32px
     }
     .hero-art-wrap {
-        min-height: 620px;
+        min-height: 620px
     }
     .karma-grid--compact {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr)
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width:991px) {
     .kc-navbar {
-        min-height: 72px;
+        min-height: 72px
     }
     .navbar-collapse {
         margin-top: 12px;
         padding: 16px;
         border: 1px solid rgba(217, 152, 18, .12);
         border-radius: 18px;
-        background: rgba(21, 9, 2, .98);
+        background: rgba(21, 9, 2, .98)
     }
     .nav-link {
-        padding: 10px 14px !important;
+        padding: 10px 14px !important
     }
     .hero-section {
-        padding-top: 72px;
+        padding-top: 72px
     }
     .hero-content {
         min-height: auto;
-        padding-top: 70px;
+        padding-top: 70px
     }
     .hero-copy {
-        text-align: center;
+        text-align: center
     }
     .eyebrow {
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto
     }
     .hero-copy h2,
     .hero-description {
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto
     }
     .hero-actions,
     .hero-stats {
-        justify-content: center;
+        justify-content: center
     }
     .hero-art-wrap {
         min-height: auto;
-        margin-top: 10px;
+        margin-top: 10px
     }
     .hero-art {
-        width: min(560px, 92vw);
+        width: min(560px, 92vw)
     }
     .karma-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
     .impact-stats {
         grid-template-columns: repeat(3, 1fr);
-        row-gap: 32px;
+        row-gap: 32px
     }
     .karma-detail-section {
-        padding-top: 130px;
+        padding-top: 130px
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width:575px) {
     .kc-brand {
-        font-size: 23px;
+        font-size: 23px
     }
     .brand-symbol {
         width: 27px;
-        height: 27px;
+        height: 27px
     }
     .hero-content {
-        padding-top: 50px;
+        padding-top: 50px
     }
     .eyebrow {
         font-size: 8px;
-        letter-spacing: 2px;
+        letter-spacing: 2px
     }
     .hero-copy h1 {
         font-size: 64px;
-        letter-spacing: -1px;
+        letter-spacing: -1px
     }
     .hero-copy h2 {
-        font-size: 31px;
+        font-size: 31px
     }
     .hero-description {
         font-size: 14px;
-        line-height: 1.7;
+        line-height: 1.7
     }
     .hero-actions {
         flex-direction: column;
-        align-items: center;
+        align-items: center
     }
     .kc-primary-btn,
     .kc-outline-btn {
-        width: 210px;
+        width: 210px
     }
     .hero-stats {
         gap: 22px;
-        flex-wrap: wrap;
+        flex-wrap: wrap
     }
     .stat-number {
-        font-size: 26px;
+        font-size: 26px
     }
     .stat-label {
         font-size: 9px;
-        letter-spacing: 1.3px;
+        letter-spacing: 1.3px
     }
     .hero-art {
-        width: 96vw;
+        width: 96vw
     }
     .orbit-badge {
-        width: 74px;
+        width: 74px
     }
     .orbit-badge-circle {
         width: 42px;
         height: 42px;
-        font-size: 17px;
+        font-size: 17px
     }
     .orbit-badge-label {
-        font-size: 9px;
+        font-size: 9px
     }
     .karma-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
     .impact-stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
     .karma-grid--compact {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
     .karma-detail-card {
-        padding: 40px 22px;
+        padding: 40px 22px
     }
 }
 
-
-/* ===== SEVA FORM SECTION ===== */
-
 .seva-form-section {
     padding: 20px 20px 90px;
-    background: var(--bg);
+    background: var(--bg)
 }
 
 .seva-form-card {
@@ -1062,14 +1004,11 @@ a {
     border-radius: var(--radius-lg);
     padding: 40px 36px;
     max-width: 680px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
-
-/* Form sections */
-
 .form-section {
-    margin-bottom: 30px;
+    margin-bottom: 30px
 }
 
 .form-label {
@@ -1079,22 +1018,19 @@ a {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 6px;
-    color: #f2e2bd;
+    color: #f2e2bd
 }
 
 .form-label span {
     color: var(--gold);
-    font-weight: 700;
+    font-weight: 700
 }
 
 .form-help {
     font-size: 13px;
     color: var(--muted);
-    margin-bottom: 12px;
+    margin-bottom: 12px
 }
-
-
-/* Upload box */
 
 .upload-box {
     display: flex;
@@ -1107,49 +1043,46 @@ a {
     cursor: pointer;
     text-align: center;
     background: rgba(0, 0, 0, 0.15);
-    transition: border-color 0.2s ease, background 0.2s ease;
+    transition: border-color 0.2s ease, background 0.2s ease
 }
 
 .upload-box:hover {
     border-color: var(--gold);
-    background: rgba(217, 152, 18, 0.06);
+    background: rgba(217, 152, 18, 0.06)
 }
 
 .upload-icon {
     font-size: 32px;
-    margin-bottom: 8px;
+    margin-bottom: 8px
 }
 
 .upload-title {
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 4px;
-    color: var(--gold-light);
+    color: var(--gold-light)
 }
 
 .upload-subtitle {
     font-size: 12px;
-    color: var(--muted);
+    color: var(--muted)
 }
-
-
-/* Photo preview */
 
 .photo-preview-container {
     display: none;
     position: relative;
-    margin-top: 12px;
+    margin-top: 12px
 }
 
 .photo-preview-container.active {
-    display: block;
+    display: block
 }
 
 .photo-preview-container img {
     width: 100%;
     max-height: 280px;
     object-fit: cover;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md)
 }
 
 .remove-photo {
@@ -1164,11 +1097,8 @@ a {
     color: #fff;
     font-size: 18px;
     line-height: 1;
-    cursor: pointer;
+    cursor: pointer
 }
-
-
-/* Inputs */
 
 .tree-input {
     width: 100%;
@@ -1180,39 +1110,36 @@ a {
     outline: none;
     background: rgba(0, 0, 0, 0.2);
     color: var(--cream);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease
 }
 
 .tree-input::placeholder {
-    color: var(--muted);
+    color: var(--muted)
 }
 
 .tree-input:focus {
-    border-color: var(--gold);
+    border-color: var(--gold)
 }
 
 .tree-textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 100px
 }
 
 .character-count {
     text-align: right;
     font-size: 12px;
     color: var(--muted);
-    margin-top: 4px;
+    margin-top: 4px
 }
-
-
-/* Location */
 
 .location-row {
     display: flex;
-    gap: 8px;
+    gap: 8px
 }
 
 .location-row .tree-input {
-    flex: 1;
+    flex: 1
 }
 
 .location-btn {
@@ -1225,26 +1152,23 @@ a {
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease
 }
 
 .location-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(255, 145, 8, .25);
+    box-shadow: 0 10px 24px rgba(255, 145, 8, .25)
 }
 
 .location-status {
     font-size: 12px;
     margin-top: 6px;
-    color: #7bc47f;
+    color: #7bc47f
 }
 
 .location-status.error {
-    color: #e57373;
+    color: #e57373
 }
-
-
-/* AI verification box */
 
 .verification-info {
     display: flex;
@@ -1253,27 +1177,24 @@ a {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 16px;
-    margin-bottom: 26px;
+    margin-bottom: 26px
 }
 
 .verification-icon {
-    font-size: 22px;
+    font-size: 22px
 }
 
 .verification-info h3 {
     font-size: 14px;
     margin: 0 0 4px;
-    color: #f2e2bd;
+    color: #f2e2bd
 }
 
 .verification-info p {
     font-size: 12px;
     color: var(--muted);
-    margin: 0;
+    margin: 0
 }
-
-
-/* Submit button */
 
 .submit-btn {
     width: 100%;
@@ -1290,39 +1211,39 @@ a {
     justify-content: center;
     gap: 8px;
     box-shadow: 0 13px 32px rgba(255, 142, 7, .17);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 17px 40px rgba(255, 142, 7, .27);
+    box-shadow: 0 17px 40px rgba(255, 142, 7, .27)
 }
 
 .submit-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    transform: none;
+    transform: none
 }
 
 .submit-loader {
     display: none;
-    animation: spin 0.8s linear infinite;
+    animation: spin 0.8s linear infinite
 }
 
 .submit-btn.loading .submit-loader {
-    display: inline-block;
+    display: inline-block
 }
 
 .submit-btn.loading #sevaSubmitText {
-    display: none;
+    display: none
 }
 
 @keyframes spin {
     from {
-        transform: rotate(0deg);
+        transform: rotate(0deg)
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(360deg)
     }
 }
 
@@ -1330,24 +1251,16 @@ a {
     text-align: center;
     font-size: 12px;
     color: var(--muted);
-    margin-top: 14px;
+    margin-top: 14px
 }
-
-
-/* Back to overview — page end */
 
 .seva-back-section {
-    padding: 0 20px 100px;
+    padding: 0 20px 100px
 }
-
-
-/* =========================================================
-   SEVA ACTIVITY PAGE
-   ========================================================= */
 
 .seva-activity-hero {
     padding: 150px 0 70px;
-    background: var(--kc-bg, #fafafa);
+    background: var(--kc-bg, #fafafa)
 }
 
 .seva-back-link {
@@ -1355,17 +1268,17 @@ a {
     margin-bottom: 35px;
     color: inherit;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-back-link:hover {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 .seva-activity-header {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 25px
 }
 
 .seva-activity-icon {
@@ -1377,14 +1290,14 @@ a {
     border-radius: 24px;
     background: rgba(184, 134, 11, 0.10);
     font-size: 48px;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .seva-activity-header h1 {
     margin: 5px 0 10px;
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(42px, 6vw, 68px);
-    font-weight: 700;
+    font-weight: 700
 }
 
 .seva-activity-header p {
@@ -1392,14 +1305,11 @@ a {
     margin: 0;
     font-size: 17px;
     line-height: 1.7;
-    opacity: 0.75;
+    opacity: 0.75
 }
 
-
-/* GOAL */
-
 .seva-goal-section {
-    padding: 20px 0 60px;
+    padding: 20px 0 60px
 }
 
 .seva-goal-panel {
@@ -1410,18 +1320,18 @@ a {
     padding: 35px;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.75)
 }
 
 .seva-goal-main h2 {
     margin: 8px 0;
     font-family: "Cormorant Garamond", serif;
-    font-size: 38px;
+    font-size: 38px
 }
 
 .seva-goal-main p {
     margin: 0;
-    opacity: 0.7;
+    opacity: 0.7
 }
 
 .seva-goal-points {
@@ -1429,29 +1339,26 @@ a {
     text-align: center;
     padding: 20px;
     border-radius: 20px;
-    background: rgba(184, 134, 11, 0.10);
+    background: rgba(184, 134, 11, 0.10)
 }
 
 .seva-goal-points strong {
     display: block;
-    font-size: 38px;
+    font-size: 38px
 }
 
 .seva-goal-points span {
     font-size: 13px;
-    opacity: 0.7;
+    opacity: 0.7
 }
 
-
-/* HISTORY */
-
 .seva-history-section {
-    padding: 40px 0 80px;
+    padding: 40px 0 80px
 }
 
 .seva-history-list {
     display: grid;
-    gap: 15px;
+    gap: 15px
 }
 
 .seva-history-item {
@@ -1461,7 +1368,7 @@ a {
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.7)
 }
 
 .seva-history-icon {
@@ -1473,24 +1380,24 @@ a {
     border-radius: 15px;
     background: rgba(184, 134, 11, 0.08);
     font-size: 28px;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .seva-history-content h3 {
     margin: 0 0 5px;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 700
 }
 
 .seva-history-content p {
     margin: 0 0 4px;
     font-size: 13px;
-    opacity: 0.6;
+    opacity: 0.6
 }
 
 .seva-history-content span {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-empty-history {
@@ -1498,37 +1405,34 @@ a {
     text-align: center;
     border: 1px dashed rgba(0, 0, 0, 0.15);
     border-radius: 18px;
-    opacity: 0.6;
+    opacity: 0.6
 }
 
-
-/* FORM AREA */
-
 .seva-activity-form-section {
-    padding: 40px 0 90px;
+    padding: 40px 0 90px
 }
 
 .seva-activity-form-grid {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
     gap: 50px;
-    align-items: start;
+    align-items: start
 }
 
 .seva-activity-info {
     position: sticky;
-    top: 120px;
+    top: 120px
 }
 
 .seva-activity-info h2 {
     margin: 10px 0 15px;
     font-family: "Cormorant Garamond", serif;
-    font-size: 42px;
+    font-size: 42px
 }
 
 .seva-activity-info>p {
     line-height: 1.7;
-    opacity: 0.7;
+    opacity: 0.7
 }
 
 .seva-verification-box {
@@ -1537,58 +1441,55 @@ a {
     margin-top: 30px;
     padding: 20px;
     border-radius: 18px;
-    background: rgba(184, 134, 11, 0.08);
+    background: rgba(184, 134, 11, 0.08)
 }
 
 .seva-verification-box>span {
-    font-size: 25px;
+    font-size: 25px
 }
 
 .seva-verification-box strong {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 5px
 }
 
 .seva-verification-box p {
     margin: 0;
     font-size: 13px;
     line-height: 1.6;
-    opacity: 0.7;
+    opacity: 0.7
 }
 
-
-/* ACTIVITY FORM */
-
 .seva-activity-form-section .seva-form-card {
-    padding: 35px;
+    padding: 35px
 }
 
 .seva-activity-form-section .form-section {
-    margin-bottom: 25px;
+    margin-bottom: 25px
 }
 
 .seva-activity-form-section .form-label {
-    font-weight: 700;
+    font-weight: 700
 }
 
 .seva-photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    margin-top: 15px;
+    margin-top: 15px
 }
 
 .seva-photo-preview {
     position: relative;
     aspect-ratio: 1;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 14px
 }
 
 .seva-photo-preview img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover
 }
 
 .remove-seva-photo {
@@ -1602,52 +1503,43 @@ a {
     background: rgba(0, 0, 0, 0.7);
     color: white;
     font-size: 20px;
-    line-height: 1;
+    line-height: 1
 }
 
-
-/* MOBILE */
-
-@media (max-width: 768px) {
+@media (max-width:768px) {
     .seva-activity-hero {
-        padding-top: 120px;
+        padding-top: 120px
     }
     .seva-activity-header {
         align-items: flex-start;
-        flex-direction: column;
+        flex-direction: column
     }
     .seva-activity-icon {
         width: 70px;
         height: 70px;
-        font-size: 35px;
+        font-size: 35px
     }
     .seva-goal-panel {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-start
     }
     .seva-goal-points {
-        width: 100%;
+        width: 100%
     }
     .seva-activity-form-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 30px
     }
     .seva-activity-info {
-        position: static;
+        position: static
     }
     .seva-photo-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
     .seva-activity-form-section .seva-form-card {
-        padding: 22px;
+        padding: 22px
     }
 }
-
-
-/* =========================================================
-   KARMCHAKRA — FINAL DARK SEVA THEME
-   Keep ALL pages in the same Seva Karma brown + gold theme
-   ========================================================= */
 
 :root {
     --bg: #100702;
@@ -1663,44 +1555,31 @@ a {
     --border-strong: rgba(217, 152, 18, 0.48);
     --card-bg: rgba(255, 208, 128, 0.035);
     --radius-lg: 22px;
-    --radius-md: 16px;
+    --radius-md: 16px
 }
-
-
-/* =========================================================
-   GLOBAL DARK THEME
-   ========================================================= */
 
 html,
 body {
     background: #100702 !important;
-    color: #f4e8cf !important;
+    color: #f4e8cf !important
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100vh
 }
-
-
-/* Prevent Bootstrap/light-theme defaults */
 
 main,
 section,
 header,
 footer,
 .container-fluid {
-    color: #f4e8cf;
+    color: #f4e8cf
 }
-
-
-/* =========================================================
-   SEVA ACTIVITY HERO
-   ========================================================= */
 
 .seva-activity-hero {
     min-height: auto !important;
     padding: 130px 20px 70px !important;
-    background: radial-gradient( circle at 50% 15%, rgba(217, 152, 18, 0.10), transparent 35%), #100702 !important;
+    background: radial-gradient( circle at 50% 15%, rgba(217, 152, 18, 0.10), transparent 35%), #100702 !important
 }
 
 .seva-back-link {
@@ -1709,12 +1588,12 @@ footer,
     color: #dca92e !important;
     font-size: 14px;
     font-weight: 600;
-    transition: 0.25s ease;
+    transition: 0.25s ease
 }
 
 .seva-back-link:hover {
     color: #f5c84b !important;
-    transform: translateX(-4px);
+    transform: translateX(-4px)
 }
 
 .seva-activity-header {
@@ -1722,7 +1601,7 @@ footer,
     align-items: center;
     gap: 28px;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .seva-activity-icon {
@@ -1736,7 +1615,7 @@ footer,
     font-size: 46px;
     background: rgba(217, 152, 18, 0.16);
     border: 1px solid rgba(217, 152, 18, 0.40);
-    box-shadow: 0 0 35px rgba(217, 152, 18, 0.10), inset 0 0 20px rgba(217, 152, 18, 0.05);
+    box-shadow: 0 0 35px rgba(217, 152, 18, 0.10), inset 0 0 20px rgba(217, 152, 18, 0.05)
 }
 
 .seva-activity-header h1 {
@@ -1745,7 +1624,7 @@ footer,
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(44px, 6vw, 76px);
     line-height: 1;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-activity-header p {
@@ -1753,17 +1632,12 @@ footer,
     margin: 0 !important;
     color: #bdb09c !important;
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.7
 }
-
-
-/* =========================================================
-   GOAL SECTION
-   ========================================================= */
 
 .seva-goal-section {
     padding: 20px 20px 80px !important;
-    background: #100702 !important;
+    background: #100702 !important
 }
 
 .seva-goal-panel {
@@ -1777,7 +1651,7 @@ footer,
     border: 1px solid rgba(217, 152, 18, 0.25);
     border-radius: 22px;
     background: linear-gradient( 135deg, rgba(217, 152, 18, 0.09), rgba(255, 208, 128, 0.025)) !important;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18)
 }
 
 .seva-goal-main h2 {
@@ -1785,13 +1659,13 @@ footer,
     color: #f2e2bd !important;
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(30px, 4vw, 44px);
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-goal-main p {
     margin: 0 !important;
     color: #a99a86 !important;
-    font-size: 14px;
+    font-size: 14px
 }
 
 .seva-goal-points {
@@ -1800,7 +1674,7 @@ footer,
     text-align: center;
     border-radius: 20px;
     background: rgba(217, 152, 18, 0.13);
-    border: 1px solid rgba(217, 152, 18, 0.25);
+    border: 1px solid rgba(217, 152, 18, 0.25)
 }
 
 .seva-goal-points strong {
@@ -1808,7 +1682,7 @@ footer,
     color: #f1d999 !important;
     font-family: "Cormorant Garamond", serif;
     font-size: 46px;
-    line-height: 1;
+    line-height: 1
 }
 
 .seva-goal-points span {
@@ -1818,18 +1692,13 @@ footer,
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: uppercase
 }
-
-
-/* =========================================================
-   HISTORY
-   ========================================================= */
 
 .seva-history-section {
     padding: 40px 20px 100px !important;
     background: #100702 !important;
-    border-top: 1px solid rgba(217, 152, 18, 0.12);
+    border-top: 1px solid rgba(217, 152, 18, 0.12)
 }
 
 .seva-history-list {
@@ -1837,7 +1706,7 @@ footer,
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 16px
 }
 
 .seva-history-item {
@@ -1848,13 +1717,13 @@ footer,
     border: 1px solid rgba(217, 152, 18, 0.18);
     border-radius: 18px;
     background: rgba(255, 208, 128, 0.035);
-    transition: 0.25s ease;
+    transition: 0.25s ease
 }
 
 .seva-history-item:hover {
     transform: translateY(-3px);
     border-color: rgba(217, 152, 18, 0.38);
-    background: rgba(217, 152, 18, 0.055);
+    background: rgba(217, 152, 18, 0.055)
 }
 
 .seva-history-icon {
@@ -1867,7 +1736,7 @@ footer,
     border-radius: 16px;
     font-size: 28px;
     background: rgba(217, 152, 18, 0.12);
-    border: 1px solid rgba(217, 152, 18, 0.20);
+    border: 1px solid rgba(217, 152, 18, 0.20)
 }
 
 .seva-history-content h3 {
@@ -1875,19 +1744,19 @@ footer,
     color: #f2e2bd !important;
     font-family: "Inter", sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-history-content p {
     margin: 0 0 4px !important;
     color: #b89f76 !important;
-    font-size: 11px;
+    font-size: 11px
 }
 
 .seva-history-content span {
     color: #dca92e !important;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-empty-history {
@@ -1897,18 +1766,13 @@ footer,
     color: #a99a86 !important;
     border: 1px dashed rgba(217, 152, 18, 0.25);
     border-radius: 18px;
-    background: rgba(255, 208, 128, 0.025);
+    background: rgba(255, 208, 128, 0.025)
 }
-
-
-/* =========================================================
-   ACTIVITY FORM SECTION
-   ========================================================= */
 
 .seva-activity-form-section {
     padding: 40px 20px 120px !important;
     background: #100702 !important;
-    border-top: 1px solid rgba(217, 152, 18, 0.12);
+    border-top: 1px solid rgba(217, 152, 18, 0.12)
 }
 
 .seva-activity-form-grid {
@@ -1917,11 +1781,11 @@ footer,
     display: grid;
     grid-template-columns: 0.85fr 1.15fr;
     gap: 50px;
-    align-items: start;
+    align-items: start
 }
 
 .seva-activity-info {
-    padding-top: 20px;
+    padding-top: 20px
 }
 
 .seva-activity-info h2 {
@@ -1929,7 +1793,7 @@ footer,
     color: #efd49c !important;
     font-family: "Cormorant Garamond", serif;
     font-size: 42px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-activity-info>p {
@@ -1937,13 +1801,8 @@ footer,
     margin: 0 0 25px !important;
     color: #a99a86 !important;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.7
 }
-
-
-/* =========================================================
-   AI VERIFICATION BOX
-   ========================================================= */
 
 .seva-verification-box {
     display: flex;
@@ -1952,29 +1811,24 @@ footer,
     padding: 18px;
     border-radius: 16px;
     background: rgba(217, 152, 18, 0.06);
-    border: 1px solid rgba(217, 152, 18, 0.20);
+    border: 1px solid rgba(217, 152, 18, 0.20)
 }
 
 .seva-verification-box>span {
-    font-size: 24px;
+    font-size: 24px
 }
 
 .seva-verification-box strong {
     color: #f2e2bd !important;
-    font-size: 14px;
+    font-size: 14px
 }
 
 .seva-verification-box p {
     margin: 5px 0 0 !important;
     color: #a99a86 !important;
     font-size: 12px;
-    line-height: 1.6;
+    line-height: 1.6
 }
-
-
-/* =========================================================
-   FORM CARD
-   ========================================================= */
 
 .seva-activity-form-section .seva-form-card {
     width: 100%;
@@ -1983,27 +1837,22 @@ footer,
     padding: 38px;
     background: rgba(255, 208, 128, 0.035) !important;
     border: 1px solid rgba(217, 152, 18, 0.22) !important;
-    border-radius: 22px;
+    border-radius: 22px
 }
 
 .seva-activity-form-section .form-section {
-    margin-bottom: 26px;
+    margin-bottom: 26px
 }
 
 .seva-activity-form-section .form-label {
     color: #f2e2bd !important;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .seva-activity-form-section .form-help {
-    color: #a99a86 !important;
+    color: #a99a86 !important
 }
-
-
-/* =========================================================
-   INPUTS
-   ========================================================= */
 
 .seva-activity-form-section .tree-input {
     width: 100%;
@@ -2012,38 +1861,33 @@ footer,
     background: rgba(0, 0, 0, 0.24) !important;
     border: 1px solid rgba(217, 152, 18, 0.22) !important;
     border-radius: 11px;
-    outline: none;
+    outline: none
 }
 
 .seva-activity-form-section .tree-input::placeholder {
-    color: #7d7160 !important;
+    color: #7d7160 !important
 }
 
 .seva-activity-form-section .tree-input:focus {
     border-color: #d99812 !important;
-    box-shadow: 0 0 0 3px rgba(217, 152, 18, 0.08);
+    box-shadow: 0 0 0 3px rgba(217, 152, 18, 0.08)
 }
 
 .seva-activity-form-section select.tree-input {
     color: #f4e8cf !important;
-    background-color: #180a03 !important;
+    background-color: #180a03 !important
 }
 
 .seva-activity-form-section select.tree-input option {
     color: #f4e8cf;
-    background: #180a03;
+    background: #180a03
 }
-
-
-/* =========================================================
-   PHOTO GRID
-   ========================================================= */
 
 .seva-photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin-top: 12px;
+    margin-top: 12px
 }
 
 .seva-photo-preview {
@@ -2052,14 +1896,14 @@ footer,
     overflow: hidden;
     border-radius: 13px;
     border: 1px solid rgba(217, 152, 18, 0.25);
-    background: #180a03;
+    background: #180a03
 }
 
 .seva-photo-preview img {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover;
+    object-fit: cover
 }
 
 .remove-seva-photo {
@@ -2076,17 +1920,12 @@ footer,
     color: #fff;
     background: rgba(0, 0, 0, 0.75);
     font-size: 18px;
-    cursor: pointer;
+    cursor: pointer
 }
-
-
-/* =========================================================
-   LOCATION BUTTON
-   ========================================================= */
 
 .location-row {
     display: flex;
-    gap: 10px;
+    gap: 10px
 }
 
 .location-btn {
@@ -2097,30 +1936,20 @@ footer,
     color: #241103 !important;
     background: linear-gradient( 135deg, #ff8f05, #f5c42c) !important;
     font-weight: 700;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .location-btn:disabled {
     opacity: 0.65;
-    cursor: not-allowed;
+    cursor: not-allowed
 }
-
-
-/* =========================================================
-   CHARACTER COUNT
-   ========================================================= */
 
 .character-count {
     margin-top: 5px;
     text-align: right;
     color: #7d7160 !important;
-    font-size: 11px;
+    font-size: 11px
 }
-
-
-/* =========================================================
-   SUBMIT
-   ========================================================= */
 
 .submit-btn {
     width: 100%;
@@ -2132,151 +1961,117 @@ footer,
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: 0.25s ease
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px)
 }
 
 .submit-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    transform: none;
+    transform: none
 }
 
 .secure-note {
     margin-top: 13px;
     text-align: center;
     color: #7d7160 !important;
-    font-size: 11px;
+    font-size: 11px
 }
-
-
-/* =========================================================
-   BACK SECTION
-   ========================================================= */
 
 .seva-back-section {
     padding: 0 20px 100px !important;
-    background: #100702 !important;
+    background: #100702 !important
 }
-
-
-/* =========================================================
-   REMOVE ANY ACCIDENTAL LIGHT BACKGROUNDS
-   ========================================================= */
 
 .seva-activity-hero *,
 .seva-goal-section *,
 .seva-history-section *,
 .seva-activity-form-section *,
 .seva-back-section * {
-    --bs-body-bg: #100702;
+    --bs-body-bg: #100702
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 991px) {
+@media (max-width:991px) {
     .seva-activity-header {
-        align-items: flex-start;
+        align-items: flex-start
     }
     .seva-activity-form-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
     .seva-activity-info {
-        padding-top: 0;
+        padding-top: 0
     }
     .seva-history-list {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width:575px) {
     .seva-activity-hero {
-        padding: 110px 18px 55px !important;
+        padding: 110px 18px 55px !important
     }
     .seva-activity-header {
         flex-direction: column;
-        gap: 20px;
+        gap: 20px
     }
     .seva-activity-icon {
         width: 76px;
         height: 76px;
-        font-size: 36px;
+        font-size: 36px
     }
     .seva-activity-header h1 {
-        font-size: 46px;
+        font-size: 46px
     }
     .seva-goal-panel {
         padding: 28px 22px;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-start
     }
     .seva-goal-points {
-        width: 100%;
+        width: 100%
     }
     .seva-activity-form-section .seva-form-card {
-        padding: 25px 20px;
+        padding: 25px 20px
     }
     .location-row {
-        flex-direction: column;
+        flex-direction: column
     }
     .location-btn {
-        width: 100%;
+        width: 100%
     }
     .seva-photo-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
 }
-
-
-/* =========================================================
-   YOUR SEVA JOURNEY
-   ========================================================= */
 
 .seva-journey-section {
     width: 100%;
     margin-top: 70px;
-    margin-bottom: 80px;
+    margin-bottom: 80px
 }
-
-
-/* =========================================================
-   MAIN JOURNEY CARD
-   ========================================================= */
 
 .seva-journey-card {
     width: 100%;
-    /* FIXED SIZE LIKE YOUR SECOND IMAGE */
     height: auto;
     min-height: 300px;
     max-height: 430px;
-    /* Less unnecessary bottom space */
     padding: 55px 50px 40px;
     background: #0f0905;
     border: 1px solid rgba(190, 135, 20, 0.35);
     border-radius: 30px;
     display: flex;
     flex-direction: column;
-    /* Keeps everything vertically balanced */
     justify-content: center;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
-
-
-/* =========================================================
-   HEADING
-   ========================================================= */
 
 .seva-journey-heading {
     text-align: center;
-    /* Slightly smaller gap after heading */
     margin: 0 0 42px 0;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .seva-journey-heading h2 {
@@ -2285,13 +2080,8 @@ footer,
     font-size: clamp(42px, 4vw, 58px);
     font-weight: 600;
     line-height: 1.1;
-    color: #f0d18a;
+    color: #f0d18a
 }
-
-
-/* =========================================================
-   STAT CONTAINER
-   ========================================================= */
 
 .seva-journey-stats {
     width: 100%;
@@ -2299,27 +2089,16 @@ footer,
     grid-template-columns: repeat(3, 1fr);
     align-items: start;
     text-align: center;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
-
-
-/* =========================================================
-   INDIVIDUAL STAT
-   ========================================================= */
 
 .seva-stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* Reduced so card doesn't become unnecessarily tall */
-    min-height: 120px;
+    min-height: 120px
 }
-
-
-/* =========================================================
-   ICON
-   ========================================================= */
 
 .seva-stat-icon {
     height: 50px;
@@ -2330,21 +2109,13 @@ footer,
     margin-bottom: 10px;
     font-size: 32px;
     line-height: 1;
-    color: #f0d18a;
+    color: #f0d18a
 }
-
-
-/* First Icon */
 
 .seva-icon-star {
     font-size: 39px;
-    color: #f0d18a;
+    color: #f0d18a
 }
-
-
-/* =========================================================
-   NUMBER / VALUE
-   ========================================================= */
 
 .seva-stat-value {
     font-family: "Cormorant Garamond", serif;
@@ -2352,23 +2123,13 @@ footer,
     font-weight: 500;
     line-height: 1.2;
     color: #f0d18a;
-    margin-bottom: 8px;
+    margin-bottom: 8px
 }
-
-
-/* =========================================================
-   TIER TEXT
-   ========================================================= */
 
 .seva-stat-value.seva-tier {
     font-size: 30px;
-    white-space: nowrap;
+    white-space: nowrap
 }
-
-
-/* =========================================================
-   LABEL
-   ========================================================= */
 
 .seva-stat-label {
     font-family: "Inter", sans-serif;
@@ -2378,54 +2139,44 @@ footer,
     text-transform: uppercase;
     color: #a99b8c;
     line-height: 1.5;
-    text-align: center;
+    text-align: center
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 991px) {
+@media (max-width:991px) {
     .seva-journey-section {
-        margin-top: 50px;
+        margin-top: 50px
     }
     .seva-journey-card {
         height: 430px;
         min-height: 430px;
         max-height: 430px;
-        padding: 50px 30px 35px;
+        padding: 50px 30px 35px
     }
     .seva-journey-heading {
-        margin-bottom: 38px;
+        margin-bottom: 38px
     }
     .seva-journey-stats {
-        gap: 30px;
+        gap: 30px
     }
     .seva-stat {
-        min-height: 115px;
+        min-height: 115px
     }
     .seva-stat-value {
-        font-size: 30px;
+        font-size: 30px
     }
     .seva-stat-value.seva-tier {
-        font-size: 25px;
+        font-size: 25px
     }
     .seva-stat-label {
         font-size: 11px;
-        letter-spacing: 1.5px;
+        letter-spacing: 1.5px
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 767px) {
+@media (max-width:767px) {
     .seva-journey-section {
         margin-top: 40px;
-        margin-bottom: 50px;
+        margin-bottom: 50px
     }
     .seva-journey-card {
         height: auto;
@@ -2433,52 +2184,47 @@ footer,
         max-height: none;
         padding: 45px 20px;
         border-radius: 22px;
-        justify-content: flex-start;
+        justify-content: flex-start
     }
     .seva-journey-heading {
-        margin-bottom: 40px;
+        margin-bottom: 40px
     }
     .seva-journey-heading h2 {
-        font-size: 40px;
+        font-size: 40px
     }
     .seva-journey-stats {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 40px
     }
     .seva-stat {
-        min-height: auto;
+        min-height: auto
     }
     .seva-stat-icon {
-        margin-bottom: 10px;
+        margin-bottom: 10px
     }
     .seva-stat-value {
-        font-size: 32px;
+        font-size: 32px
     }
     .seva-stat-value.seva-tier {
         font-size: 26px;
-        white-space: normal;
+        white-space: normal
     }
     .seva-stat-label {
-        font-size: 11px;
+        font-size: 11px
     }
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
+@media (max-width:480px) {
     .seva-journey-card {
-        padding: 40px 15px;
+        padding: 40px 15px
     }
     .seva-journey-heading h2 {
-        font-size: 36px;
+        font-size: 36px
     }
     .seva-stat-value {
-        font-size: 29px;
+        font-size: 29px
     }
     .seva-stat-value.seva-tier {
-        font-size: 24px;
+        font-size: 24px
     }
 }
