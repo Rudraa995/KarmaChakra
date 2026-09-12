@@ -965,10 +965,12 @@ function initKarmaDetailPage() {
 
             <a
                 href="${
-                    domain.id === "seva"
-                    ? "seva.html"
-                    : "plant-tree.html"
-                }"
+    domain.id === "seva"
+    ? "seva.html"
+    : domain.id === "samaj"
+    ? "samaj.html"
+    : "plant-tree.html"
+}"
                 class="btn kc-primary-btn"
             >
                 Log This Karma

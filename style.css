@@ -2738,3 +2738,18 @@ a.seva-sidebar-item {
     padding: 110px 20px 80px;
   }
 }
+
+/* ===== Fix for <select> dropdowns using .tree-input ===== */
+select.tree-input {
+  appearance: auto;
+  -webkit-appearance: menulist;
+  height: 48px;
+  color: var(--cream);
+  background-color: #180a03;
+  cursor: pointer;
+}
+
+select.tree-input option {
+  color: var(--cream);
+  background-color: #180a03;
+}
