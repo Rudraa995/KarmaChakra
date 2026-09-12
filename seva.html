@@ -4,21 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seva Karma — KarmChakra</title>
-  <meta name="description" content="Seva Karma — selfless service activities on KarmChakra. Feed the hungry, donate essentials, support elderly care and more.">
+  <meta name="description" content="Seva Karma — selfless service activities on KarmChakra.">
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Navbar (same as homepage / karma.html) -->
+  <!-- Top navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top kc-navbar kc-navbar--scrolled">
     <div class="container kc-container">
       <a class="navbar-brand kc-brand" href="index.html">
@@ -30,13 +26,11 @@
         </svg>
         <span>KarmChakra</span>
       </a>
-
       <button class="navbar-toggler border-0 shadow-none" type="button"
               data-bs-toggle="collapse" data-bs-target="#mainNav"
               aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
@@ -53,230 +47,185 @@
     </div>
   </nav>
 
-  <!-- Seva hero (back button yahan se hata diya) -->
-  <main class="karma-detail-section">
-    <div class="container kc-container">
+  <!-- Mobile sidebar toggle -->
+  <button class="seva-mobile-menu-btn" id="sevaMobileMenu">☰</button>
+
+  <!-- Sidebar -->
+  <aside class="seva-sidebar" id="sevaSidebar">
+    <div class="seva-sidebar-header">
+      <div class="seva-sidebar-title">Seva</div>
+      <div class="seva-sidebar-subtitle">Karma Dashboard</div>
+    </div>
+
+    <div class="seva-sidebar-nav">
+      <button class="seva-sidebar-item active"
+              data-icon="🍲" data-title="Feed the Hungry"
+              data-desc="Distribute meals to people in need.">
+        <span class="seva-sidebar-icon">🍲</span>
+        <span>Feed the Hungry</span>
+      </button>
+
+      <button class="seva-sidebar-item"
+              data-icon="👕" data-title="Donate Essentials"
+              data-desc="Give old clothes, blankets or books to those who need them.">
+        <span class="seva-sidebar-icon">👕</span>
+        <span>Donate Essentials</span>
+      </button>
+
+      <button class="seva-sidebar-item"
+              data-icon="👵" data-title="Elderly Care Visit"
+              data-desc="Spend time helping or checking in on elderly people.">
+        <span class="seva-sidebar-icon">👵</span>
+        <span>Elderly Care Visit</span>
+      </button>
+
+      <button class="seva-sidebar-item"
+              data-icon="📚" data-title="Community Teaching Support"
+              data-desc="Teach or mentor underprivileged children or adults.">
+        <span class="seva-sidebar-icon">📚</span>
+        <span>Community Teaching</span>
+      </button>
+    </div>
+
+    <div class="seva-sidebar-bottom">
+      <div class="seva-karma-score">
+        <div class="seva-karma-score-title">Karma Score</div>
+        <div class="seva-karma-score-number">1,240<span>pts</span></div>
+        <div class="seva-karma-progress"><div class="seva-karma-progress-fill"></div></div>
+        <div class="seva-karma-level">Level 7 · Seva Sevak</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="seva-sidebar-overlay" id="sevaSidebarOverlay"></div>
+
+  <!-- Main content -->
+  <main class="seva-main-content">
+    <div class="karma-detail-section" style="padding-top:40px;">
       <div class="karma-detail-card" data-reveal>
-        <span class="karma-detail-icon tone-gold">🤝</span>
+        <span class="karma-detail-icon tone-gold" id="activityIcon">🍲</span>
         <span class="section-kicker">KARMA OF SELFLESS SERVICE</span>
-        <h1>Seva Karma</h1>
-        <p class="karma-detail-description">
-          Seva Karma celebrates selfless service — acts done for others with no
-          expectation of return. Pick an activity below, perform it in the real
-          world, and submit proof for AI verification.
+        <h1 id="activityTitle">Feed the Hungry</h1>
+        <p class="karma-detail-description" id="activityDesc">
+          Distribute meals to people in need.
         </p>
       </div>
 
-      <!-- Your Seva stats — mock data for now, see SEVA_USER_STATS in script.js -->
-      <div class="impact-panel" data-reveal>
-        <h2>Your Seva Journey</h2>
-        <div class="impact-stats impact-stats--3" data-seva-summary></div>
-      </div>
+      
     </div>
+
+    <section class="seva-form-section">
+      <div class="container kc-container">
+        <div class="seva-form-card">
+          <form id="sevaForm">
+
+            <div class="form-section">
+              <label class="form-label"><span>1.</span> Upload Proof Photo</label>
+              <p class="form-help">Upload a clear photo showing your seva activity.</p>
+
+              <label for="sevaPhoto" class="upload-box" id="sevaUploadBox">
+                <div class="upload-icon">📷</div>
+                <div class="upload-title">Select a Photo</div>
+                <div class="upload-subtitle">JPG, JPEG or PNG · Max 10 MB</div>
+                <input type="file" id="sevaPhoto" accept="image/jpeg,image/png,image/jpg" hidden required>
+              </label>
+
+              <div id="sevaPhotoPreviewContainer" class="photo-preview-container">
+                <img id="sevaPhotoPreview" src="" alt="Seva preview">
+                <button type="button" id="removeSevaPhoto" class="remove-photo">×</button>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <label for="sevaTitle" class="form-label"><span>2.</span> Seva Title</label>
+              <p class="form-help">What kind of service did you perform?</p>
+              <input type="text" id="sevaTitle" class="tree-input" placeholder="e.g. Fed 20 people, Donated blankets" required>
+            </div>
+
+            <div class="form-section">
+              <label class="form-label"><span>3.</span> GPS Location</label>
+              <p class="form-help">Tell us where this seva activity took place.</p>
+              <div class="location-row">
+                <input type="text" id="sevaLocation" class="tree-input" placeholder="Your activity location" readonly required>
+                <button type="button" id="getSevaLocation" class="location-btn">📍 Get Location</button>
+              </div>
+              <div id="sevaLocationStatus" class="location-status"></div>
+            </div>
+
+            <div class="form-section">
+              <label for="sevaDescription" class="form-label"><span>4.</span> Describe Your Contribution</label>
+              <p class="form-help">Tell us a little about your seva activity.</p>
+              <textarea id="sevaDescription" class="tree-input tree-textarea" maxlength="500" rows="5" placeholder="Example: I distributed food packets to 20 families near the railway station." required></textarea>
+              <div class="character-count"><span id="sevaCharCount">0</span> / 500</div>
+            </div>
+
+            <div class="verification-info">
+              <div class="verification-icon">✨</div>
+              <div>
+                <h3>AI Verification</h3>
+                <p>Our Karma AI will analyze your photo, location and contribution details to verify your Karma.</p>
+              </div>
+            </div>
+
+            <button type="submit" id="sevaSubmitBtn" class="submit-btn">
+              <span id="sevaSubmitText">Submit for Verification</span>
+              <span id="sevaSubmitLoader" class="submit-loader">⟳</span>
+            </button>
+
+            <p class="secure-note">🔒 Your submission is securely processed for Karma verification.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="seva-back-section">
+      <div class="container kc-container text-center">
+        <a href="karma.html?domain=seva" class="btn kc-outline-btn">← Back to Seva Karma Overview</a>
+      </div>
+    </section>
+
+    <footer class="kc-footer">
+      <div class="container text-center">
+        <span class="footer-symbol">✺</span>
+        <p class="footer-tagline">Every Good Action Creates Positive Change</p>
+        <p class="footer-caption">KarmChakra · AI-powered karma recognition for a better Bharat</p>
+      </div>
+    </footer>
   </main>
-
-  <!-- Seva submission form -->
-  <section class="seva-form-section">
-    <div class="container kc-container">
-      <div class="seva-form-card">
-        <form id="sevaForm">
-
-          <!-- PHOTO -->
-          <div class="form-section">
-            <label class="form-label"><span>1.</span> Upload Proof Photo</label>
-            <p class="form-help">Upload a clear photo showing your seva activity.</p>
-
-            <label for="sevaPhoto" class="upload-box" id="sevaUploadBox">
-              <div class="upload-icon">📷</div>
-              <div class="upload-title">Select a Photo</div>
-              <div class="upload-subtitle">JPG, JPEG or PNG · Max 10 MB</div>
-              <input type="file" id="sevaPhoto" accept="image/jpeg,image/png,image/jpg" hidden required>
-            </label>
-
-            <div id="sevaPhotoPreviewContainer" class="photo-preview-container">
-              <img id="sevaPhotoPreview" src="" alt="Seva preview">
-              <button type="button" id="removeSevaPhoto" class="remove-photo">×</button>
-            </div>
-          </div>
-
-          <!-- SEVA TITLE -->
-          <div class="form-section">
-            <label for="sevaTitle" class="form-label"><span>2.</span> Seva Title</label>
-            <p class="form-help">What kind of service did you perform?</p>
-            <input type="text" id="sevaTitle" class="tree-input" placeholder="e.g. Fed 20 people, Donated blankets" required>
-          </div>
-
-          <!-- GPS LOCATION -->
-          <div class="form-section">
-            <label class="form-label"><span>3.</span> GPS Location</label>
-            <p class="form-help">Tell us where this seva activity took place.</p>
-            <div class="location-row">
-              <input type="text" id="sevaLocation" class="tree-input" placeholder="Your activity location" readonly required>
-              <button type="button" id="getSevaLocation" class="location-btn">📍 Get Location</button>
-            </div>
-            <div id="sevaLocationStatus" class="location-status"></div>
-          </div>
-
-          <!-- DESCRIPTION -->
-          <div class="form-section">
-            <label for="sevaDescription" class="form-label"><span>4.</span> Describe Your Contribution</label>
-            <p class="form-help">Tell us a little about your seva activity.</p>
-            <textarea id="sevaDescription" class="tree-input tree-textarea" maxlength="500" rows="5" placeholder="Example: I distributed food packets to 20 families near the railway station." required></textarea>
-            <div class="character-count"><span id="sevaCharCount">0</span> / 500</div>
-          </div>
-
-          <!-- AI VERIFICATION -->
-          <div class="verification-info">
-            <div class="verification-icon">✨</div>
-            <div>
-              <h3>AI Verification</h3>
-              <p>Our Karma AI will analyze your photo, location and contribution details to verify your Karma.</p>
-            </div>
-          </div>
-
-          <!-- SUBMIT -->
-          <button type="submit" id="sevaSubmitBtn" class="submit-btn">
-            <span id="sevaSubmitText">Submit for Verification</span>
-            <span id="sevaSubmitLoader" class="submit-loader">⟳</span>
-          </button>
-
-          <p class="secure-note">🔒 Your submission is securely processed for Karma verification.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seva activity catalog -->
-  <section class="seva-catalog-section">
-    <div class="container kc-container">
-      <div class="section-heading" data-reveal>
-        <span class="section-kicker">CHOOSE AN ACTIVITY</span>
-        <h2>Seva Activities</h2>
-        <p>Every activity has its own proof requirements and goal tiers.</p>
-        <span class="heading-divider"></span>
-      </div>
-
-      <!-- Populated by initSevaPage() in script.js from SEVA_ACTIVITIES -->
-      <div class="karma-grid" data-seva-catalog data-reveal></div>
-    </div>
-  </section>
-
-  <!-- Back to overview — ab yahan, page ke bilkul end mein -->
-  <section class="seva-back-section">
-    <div class="container kc-container text-center">
-      <a href="karma.html?domain=seva" class="btn kc-outline-btn">← Back to Seva Karma Overview</a>
-    </div>
-  </section>
-
-  <!-- Footer (same as homepage) -->
-  <footer class="kc-footer">
-    <div class="container text-center">
-      <span class="footer-symbol">✺</span>
-      <p class="footer-tagline">Every Good Action Creates Positive Change</p>
-      <p class="footer-caption">KarmChakra · AI-powered karma recognition for a better Bharat</p>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
+
+  <script>
+    const sevaItems = document.querySelectorAll('.seva-sidebar-item');
+    const activityIcon = document.getElementById('activityIcon');
+    const activityTitle = document.getElementById('activityTitle');
+    const activityDesc = document.getElementById('activityDesc');
+
+    sevaItems.forEach(item => {
+      item.addEventListener('click', function () {
+        sevaItems.forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        activityIcon.textContent = this.dataset.icon;
+        activityTitle.textContent = this.dataset.title;
+        activityDesc.textContent = this.dataset.desc;
+        document.getElementById('sevaSidebar').classList.remove('open');
+        document.getElementById('sevaSidebarOverlay').classList.remove('active');
+      });
+    });
+
+    const mobileBtn = document.getElementById('sevaMobileMenu');
+    const sidebarEl = document.getElementById('sevaSidebar');
+    const overlayEl = document.getElementById('sevaSidebarOverlay');
+
+    mobileBtn.addEventListener('click', () => {
+      sidebarEl.classList.toggle('open');
+      overlayEl.classList.toggle('active');
+    });
+    overlayEl.addEventListener('click', () => {
+      sidebarEl.classList.remove('open');
+      overlayEl.classList.remove('active');
+    });
+  </script>
 </body>
-</html>// Feed the Hungry
-extraFields: [
-  {
-    id: "peopleFed",
-    label: "Number of People Fed",
-    type: "number",
-    placeholder: "e.g. 10",
-    min: 1,
-    required: true
-  }
-],
-
-// Donate Essentials
-extraFields: [
-  {
-    id: "itemsDonated",
-    label: "Number of Items Donated",
-    type: "number",
-    placeholder: "e.g. 5",
-    min: 1,
-    required: true
-  }
-],
-
-// Elderly Care Visit
-extraFields: [
-  {
-    id: "elderlyPerson",
-    label: "Elderly Person / Home Name",
-    type: "text",
-    placeholder: "e.g. Shanti Old Age Home",
-    required: true
-  },
-  {
-    id: "timeSpent",
-    label: "Time Spent",
-    type: "text",
-    placeholder: "e.g. 2 hours",
-    required: true
-  }
-],
-
-// Blood Camp Support
-extraFields: [
-  {
-    id: "bloodGroup",
-    label: "Blood Group",
-    type: "select",
-    options: [
-      "A+",
-      "A-",
-      "B+",
-      "B-",
-      "AB+",
-      "AB-",
-      "O+",
-      "O-"
-    ],
-    required: true
-  }
-],
-
-// Disaster Relief Support
-extraFields: [
-  {
-    id: "disasterType",
-    label: "Disaster Type",
-    type: "select",
-    options: [
-      "Flood",
-      "Fire",
-      "Earthquake",
-      "Cyclone",
-      "Landslide",
-      "Other"
-    ],
-    required: true
-  }
-],
-
-// Community Teaching Support
-extraFields: [
-  {
-    id: "teachingHours",
-    label: "Teaching Hours",
-    type: "number",
-    placeholder: "e.g. 2",
-    min: 0.5,
-    step: 0.5,
-    required: true
-  },
-  {
-    id: "studentsTaught",
-    label: "Number of Students Taught",
-    type: "number",
-    placeholder: "e.g. 15",
-    min: 1,
-    required: true
-  }
-],
+</html>

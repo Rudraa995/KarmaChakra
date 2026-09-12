@@ -170,69 +170,7 @@ const SEVA_ACTIVITIES = [
         ]
     },
 
-    {
-        id: "blood-camp-support",
-        name: "Blood Camp Support",
-        icon: "🩸",
-        summary: "Volunteer at (not just donate to) a blood donation camp.",
-        basePoints: 100,
-        impactUnit: "camps supported",
-        proofNote: "Photo at the camp + your role there.",
-        tiers: {
-            beginner: 1,
-            intermediate: 3,
-            advanced: 10
-        },
-        extraFields: [
-            {
-                id: "bloodGroup",
-                label: "Blood Group",
-                type: "select",
-                options: [
-                    "A+",
-                    "A-",
-                    "B+",
-                    "B-",
-                    "AB+",
-                    "AB-",
-                    "O+",
-                    "O-"
-                ],
-                required: true
-            }
-        ]
-    },
-
-    {
-        id: "disaster-relief",
-        name: "Disaster Relief Support",
-        icon: "🚨",
-        summary: "Help with relief work after floods, fires or other disasters.",
-        basePoints: 150,
-        impactUnit: "relief efforts",
-        proofNote: "Photo of the relief work + location + description.",
-        tiers: {
-            beginner: 1,
-            intermediate: 3,
-            advanced: 8
-        },
-        extraFields: [
-            {
-                id: "disasterType",
-                label: "Disaster Type",
-                type: "select",
-                options: [
-                    "Flood",
-                    "Fire",
-                    "Earthquake",
-                    "Cyclone",
-                    "Landslide",
-                    "Other"
-                ],
-                required: true
-            }
-        ]
-    },
+    
 
     {
         id: "teach-support",
@@ -304,15 +242,6 @@ const SEVA_HISTORY = [
     }
 ];
 
-// ==========================================================================
-// SEVA USER STATS — DEMO
-// ==========================================================================
-
-const SEVA_USER_STATS = {
-    mudra: 320,
-    activitiesCompleted: 4,
-    tierLabel: "Seva Sevak · Tier 2"
-};
 
 // ==========================================================================
 // DOM READY
@@ -512,9 +441,7 @@ function initSevaActivityPage() {
     document.title =
         `${activity.name} — KarmChakra`;
 
-    const history = SEVA_HISTORY.filter(
-        item => item.activityId === activity.id
-    );
+
 
     page.innerHTML = `
 
@@ -603,69 +530,7 @@ function initSevaActivityPage() {
         </section>
 
 
-        <!-- HISTORY -->
-        <section class="seva-history-section">
-
-            <div class="container kc-container">
-
-                <div class="section-heading">
-
-                    <span class="section-kicker">
-                        YOUR HISTORY
-                    </span>
-
-                    <h2>
-                        Previous Seva
-                    </h2>
-
-                    <span class="heading-divider"></span>
-
-                </div>
-
-                <div class="seva-history-list">
-
-                    ${
-                        history.length > 0
-                        ?
-                        history.map(item => `
-                            <div class="seva-history-item">
-
-                                <div class="seva-history-icon">
-                                    ${item.icon}
-                                </div>
-
-                                <div class="seva-history-content">
-
-                                    <h3>
-                                        ${item.title}
-                                    </h3>
-
-                                    <p>
-                                        ${item.date}
-                                    </p>
-
-                                    <span>
-                                        ${item.details}
-                                    </span>
-
-                                </div>
-
-                            </div>
-                        `).join("")
-                        :
-                        `
-                            <div class="seva-empty-history">
-                                No previous submissions for this activity yet.
-                            </div>
-                        `
-                    }
-
-                </div>
-
-            </div>
-
-        </section>
-
+        
 
         <!-- FORM -->
         <section class="seva-activity-form-section">
