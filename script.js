@@ -88,8 +88,7 @@ const COLLECTIVE_IMPACT = [
 // SEVA KARMA — ACTIVITY CATALOG
 // ==========================================================================
 
-const SEVA_ACTIVITIES = [
-    {
+const SEVA_ACTIVITIES = [{
         id: "feed-hungry",
         name: "Feed the Hungry",
         icon: "🍲",
@@ -102,16 +101,14 @@ const SEVA_ACTIVITIES = [
             intermediate: 25,
             advanced: 100
         },
-        extraFields: [
-            {
-                id: "peopleFed",
-                label: "Number of People Fed",
-                type: "number",
-                placeholder: "e.g. 10",
-                min: 1,
-                required: true
-            }
-        ]
+        extraFields: [{
+            id: "peopleFed",
+            label: "Number of People Fed",
+            type: "number",
+            placeholder: "e.g. 10",
+            min: 1,
+            required: true
+        }]
     },
 
     {
@@ -127,16 +124,14 @@ const SEVA_ACTIVITIES = [
             intermediate: 20,
             advanced: 50
         },
-        extraFields: [
-            {
-                id: "itemsDonated",
-                label: "Number of Items Donated",
-                type: "number",
-                placeholder: "e.g. 10",
-                min: 1,
-                required: true
-            }
-        ]
+        extraFields: [{
+            id: "itemsDonated",
+            label: "Number of Items Donated",
+            type: "number",
+            placeholder: "e.g. 10",
+            min: 1,
+            required: true
+        }]
     },
 
     {
@@ -152,8 +147,7 @@ const SEVA_ACTIVITIES = [
             intermediate: 5,
             advanced: 15
         },
-        extraFields: [
-            {
+        extraFields: [{
                 id: "elderlyPerson",
                 label: "Elderly Person / Home Name",
                 type: "text",
@@ -170,7 +164,7 @@ const SEVA_ACTIVITIES = [
         ]
     },
 
-    
+
 
     {
         id: "teach-support",
@@ -185,8 +179,7 @@ const SEVA_ACTIVITIES = [
             intermediate: 10,
             advanced: 30
         },
-        extraFields: [
-            {
+        extraFields: [{
                 id: "teachingHours",
                 label: "Teaching Hours",
                 type: "number",
@@ -211,8 +204,7 @@ const SEVA_ACTIVITIES = [
 // SEVA HISTORY — DEMO DATA
 // ==========================================================================
 
-const SEVA_HISTORY = [
-    {
+const SEVA_HISTORY = [{
         activityId: "feed-hungry",
         title: "Distributed meals to 25 people",
         date: "28 Aug 2026",
@@ -298,8 +290,7 @@ function initNavbar() {
 
         window.addEventListener(
             "scroll",
-            onScroll,
-            { passive: true }
+            onScroll, { passive: true }
         );
     }
 
@@ -322,8 +313,7 @@ function initNavbar() {
                     });
                 }
             });
-        },
-        {
+        }, {
             rootMargin: "-30% 0px -60% 0px",
             threshold: 0
         }
@@ -963,33 +953,35 @@ function initKarmaDetailPage() {
 
         <div class="hero-actions karma-detail-ctas">
 
-            <a
-                href="${
-    domain.id === "seva"
-    ? "seva.html"
-    : domain.id === "samaj"
-    ? "samaj.html"
-    : domain.id === "suraksha"
-    ? "suraksha.html"
-    : domain.id === "vidya"
-    ? "vidya.html"
-    : domain.id === "arogya"
-    ? "arogya.html"
-    : "plant-tree.html"
-}"
-                class="btn kc-primary-btn"
-            >
-                Log This Karma
-            </a>
+    <a
+        href="${
+            domain.id === "seva"
+            ? "seva.html"
+            : domain.id === "jeeva"
+            ? "jeeva.html"
+            : domain.id === "samaj"
+            ? "samaj.html"
+            : domain.id === "suraksha"
+            ? "suraksha.html"
+            : domain.id === "vidya"
+            ? "vidya.html"
+            : domain.id === "arogya"
+            ? "arogya.html"
+            : "plant-tree.html"
+        }"
+        class="btn kc-primary-btn"
+    >
+        Log This Karma
+    </a>
 
-            <a
-                href="index.html#karmas"
-                class="btn kc-outline-btn"
-            >
-                ← Back to Karmas
-            </a>
+    <a
+        href="index.html#karmas"
+        class="btn kc-outline-btn"
+    >
+        ← Back to Karmas
+    </a>
 
-        </div>
+</div>
     `;
 
     const others =
