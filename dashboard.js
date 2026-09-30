@@ -1,65 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    // ------------------------------------------------------------------
-    // Config
-    // ------------------------------------------------------------------
     const API_BASE_URL = "http://127.0.0.1:8000";
     const TREE_API_URL = `${API_BASE_URL}/api/trees/`;
+    const EMERGENCY_API_URL = `${API_BASE_URL}/api/emergencies/`;
     const KARMA_PER_TREE = 10;
     const ALLOWED_TYPES = ["image/jpeg", "image/png"];
-    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+    const MAX_FILE_SIZE = 10 * 1024 * 1024;
     const REQUEST_TIMEOUT_MS = 20000;
 
     const $ = id => document.getElementById(id);
 
-    // ------------------------------------------------------------------
-    // Page elements
-    // ------------------------------------------------------------------
     const sidebar = $("sidebar");
     const sidebarOverlay = $("sidebarOverlay");
     const sections = document.querySelectorAll(".dashboard-section");
     const sidebarItems = document.querySelectorAll(".sidebar-item");
 
     const sectionInfo = {
-        "plant-tree": [
-            "Plant a Tree",
-            "Upload a photo and let our AI verify your contribution."
-        ],
-        "tree-history": [
-            "Tree History",
-            "View your planted trees and earned Karma points."
-        ],
-        "emergency": [
-            "Emergency Reporting",
-            "Report environmental incidents and help protect nature."
-        ],
-        "rewards": [
-            "Rewards",
-            "Your environmental actions unlock exciting rewards."
-        ],
-        "competitions": [
-            "School & College Competitions",
-            "Represent your campus and climb the environmental rankings."
-        ]
+        "plant-tree": ["Plant a Tree", "Upload a photo and let our AI verify your contribution."],
+        "tree-history": ["Tree History", "View your planted trees and earned Karma points."],
+        "emergency": ["Emergency Reporting", "Report environmental incidents and help protect nature."],
+        "rewards": ["Rewards", "Your environmental actions unlock exciting rewards."],
+        "competitions": ["School & College Competitions", "Represent your campus and climb the environmental rankings."],
+        "emergency-history": ["Emergency History", "View all environmental incidents you have reported."]
     };
 
-    // ------------------------------------------------------------------
-    // State
-    // ------------------------------------------------------------------
     let latitude = null;
     let longitude = null;
     let incidentLatitude = null;
     let incidentLongitude = null;
+    let selectedIncidentType = "";
     let treePreviewUrl = null;
     let incidentPreviewUrl = null;
-    let historyRequestId = 0; // prevents stale responses overwriting newer ones
+    let historyRequestId = 0;
 
-    // ------------------------------------------------------------------
-    // Helpers
-    // ------------------------------------------------------------------
     function notify(message) {
-        // Simple wrapper so alerts can be swapped for a toast UI later.
         alert(message);
     }
 
@@ -81,17 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function extractErrorMessage(data, fallback) {
         if (!data) return fallback;
-
         if (Array.isArray(data.detail)) {
             return data.detail.map(item => item.msg).join(", ") || fallback;
         }
-
         return data.detail || fallback;
     }
 
-    // ------------------------------------------------------------------
-    // Sidebar navigation
-    // ------------------------------------------------------------------
     function openSidebar() {
         sidebar?.classList.add("open");
         sidebarOverlay?.classList.add("show");
@@ -113,16 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (sectionInfo[sectionId]) {
             const [title, description] = sectionInfo[sectionId];
-
             if ($("pageTitle")) $("pageTitle").textContent = title;
             if ($("pageDescription")) $("pageDescription").textContent = description;
         }
 
         closeSidebar();
 
-        if (sectionId === "tree-history") {
-            loadTreeHistory();
-        }
+        if (sectionId === "tree-history") loadTreeHistory();
+        if (sectionId === "emergency-history") loadEmergencyHistory();
     }
 
     sidebarItems.forEach(item => {
@@ -147,25 +115,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ------------------------------------------------------------------
-    // Photo validation & preview
-    // ------------------------------------------------------------------
     function validatePhoto(file) {
         if (!file) {
             notify("Please upload a photo.");
             return false;
         }
-
         if (!ALLOWED_TYPES.includes(file.type)) {
             notify("Only JPG, JPEG and PNG images are allowed.");
             return false;
         }
-
         if (file.size > MAX_FILE_SIZE) {
             notify("Photo size cannot exceed 10 MB.");
             return false;
         }
-
         return true;
     }
 
@@ -175,22 +137,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = $(containerId);
         const file = input?.files?.[0];
 
-        if (!input || !image || !container || !file) {
-            return;
-        }
+        if (!input || !image || !container || !file) return;
 
         if (!validatePhoto(file)) {
             input.value = "";
             return;
         }
 
-        if (type === "tree" && treePreviewUrl) {
-            URL.revokeObjectURL(treePreviewUrl);
-        }
-
-        if (type === "incident" && incidentPreviewUrl) {
-            URL.revokeObjectURL(incidentPreviewUrl);
-        }
+        if (type === "tree" && treePreviewUrl) URL.revokeObjectURL(treePreviewUrl);
+        if (type === "incident" && incidentPreviewUrl) URL.revokeObjectURL(incidentPreviewUrl);
 
         const url = URL.createObjectURL(file);
         image.src = url;
@@ -198,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (type === "tree") {
             treePreviewUrl = url;
-
             const uploadBox = document.querySelector(".upload-box");
             if (uploadBox) uploadBox.style.display = "none";
         } else {
@@ -214,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (type === "tree") {
             if (treePreviewUrl) URL.revokeObjectURL(treePreviewUrl);
             treePreviewUrl = null;
-
             const uploadBox = document.querySelector(".upload-box");
             if (uploadBox) uploadBox.style.display = "";
         } else {
@@ -239,15 +192,64 @@ document.addEventListener("DOMContentLoaded", () => {
         removePhoto("incidentPhoto", "incidentPreview", "incidentPreviewContainer", "incident");
     });
 
-    // Free object URLs when leaving the page
     window.addEventListener("beforeunload", () => {
         if (treePreviewUrl) URL.revokeObjectURL(treePreviewUrl);
         if (incidentPreviewUrl) URL.revokeObjectURL(incidentPreviewUrl);
     });
 
-    // ------------------------------------------------------------------
-    // GPS location
-    // ------------------------------------------------------------------
+    function getIncidentCards() {
+        return document.querySelectorAll(".incident-card, [data-incident-type], [data-type]");
+    }
+
+    function getIncidentTypeInput() {
+        return $("incidentType") ||
+            $("incident_type") ||
+            document.querySelector('input[name="incident_type"], select[name="incident_type"]');
+    }
+
+    function detectIncidentType(card) {
+        const explicitType = card.dataset.incidentType || card.dataset.type || card.getAttribute("data-incident");
+
+        if (explicitType) return explicitType.trim();
+
+        const text = (card.textContent || "").trim().toLowerCase();
+        const knownTypes = ["illegal cutting", "forest fire", "pollution", "water leakage"];
+        const matchedType = knownTypes.find(type => text.includes(type));
+
+        if (matchedType) {
+            return matchedType.replace(/\b\w/g, char => char.toUpperCase());
+        }
+
+        return (card.textContent || "").replace(/\s+/g, " ").trim().slice(0, 100);
+    }
+
+    function selectIncidentType(card) {
+        selectedIncidentType = detectIncidentType(card);
+
+        getIncidentCards().forEach(item => {
+            item.classList.toggle("selected", item === card);
+            item.setAttribute("aria-selected", item === card ? "true" : "false");
+        });
+
+        const typeInput = getIncidentTypeInput();
+        if (typeInput) typeInput.value = selectedIncidentType;
+
+        console.log("Selected incident type:", selectedIncidentType);
+    }
+
+    getIncidentCards().forEach(card => {
+        if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
+
+        card.addEventListener("click", () => selectIncidentType(card));
+
+        card.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                selectIncidentType(card);
+            }
+        });
+    });
+
     function getLocation(inputId, statusId, buttonId, callback) {
         const button = $(buttonId);
         const status = $(statusId);
@@ -269,7 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (input) input.value = `${lat.toFixed(6)}, ${lon.toFixed(6)}`;
                 if (status) status.textContent = "✓ Location detected successfully.";
                 if (button) button.disabled = false;
-
                 if (typeof callback === "function") callback(lat, lon);
             },
             error => {
@@ -282,11 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (status) status.textContent = messages[error.code] || "Unable to get location.";
                 if (button) button.disabled = false;
             },
-            {
-                enableHighAccuracy: true,
-                timeout: 15000,
-                maximumAge: 0
-            }
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
         );
     }
 
@@ -304,9 +301,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ------------------------------------------------------------------
-    // Character counters
-    // ------------------------------------------------------------------
     $("description")?.addEventListener("input", event => {
         if ($("charCount")) $("charCount").textContent = event.target.value.length;
     });
@@ -315,9 +309,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if ($("incidentCharCount")) $("incidentCharCount").textContent = event.target.value.length;
     });
 
-    // ------------------------------------------------------------------
-    // Karma score
-    // ------------------------------------------------------------------
     function updateKarmaScore(trees) {
         const verifiedCount = trees.filter(
             tree => (tree.status || "").toLowerCase() === "verified"
@@ -330,9 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if ($("karmaFill")) $("karmaFill").style.width = `${Math.min(verifiedTotal, 100)}%`;
     }
 
-    // ------------------------------------------------------------------
-    // Tree history
-    // ------------------------------------------------------------------
     function renderTreeHistory(trees) {
         const historyList = $("historyList");
         const historyEmpty = $("historyEmpty");
@@ -343,8 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!Array.isArray(trees) || trees.length === 0) {
             historyEmpty.style.display = "block";
-            historyEmpty.textContent =
-                "🌱 No trees planted yet. Plant a tree to create your first history record.";
+            historyEmpty.textContent = "🌱 No trees planted yet. Plant a tree to create your first history record.";
             updateKarmaScore([]);
             return;
         }
@@ -359,9 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const values = [
                 `🌱 ${tree.tree_name || "Unnamed tree"}`,
-                tree.created_at
-                    ? new Date(tree.created_at).toLocaleDateString("en-IN")
-                    : "—",
+                tree.created_at ? new Date(tree.created_at).toLocaleDateString("en-IN") : "—",
                 `📍 ${tree.location || "—"}`,
                 status,
                 `${status === "verified" ? KARMA_PER_TREE : 0} pts`
@@ -370,11 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
             values.forEach((value, index) => {
                 const cell = document.createElement("span");
                 cell.textContent = value;
-
-                if (index === 3) {
-                    cell.className = `status ${status}`;
-                }
-
+                if (index === 3) cell.className = `status ${status}`;
                 row.appendChild(cell);
             });
 
@@ -402,7 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const trees = await response.json();
 
-            // Ignore outdated responses
             if (requestId !== historyRequestId) return;
 
             renderTreeHistory(trees);
@@ -418,9 +398,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Submission result
-    // ------------------------------------------------------------------
     function buildPhotoUrl(rawPath) {
         let photoPath = String(rawPath).replace(/\\/g, "/");
 
@@ -428,9 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
             photoPath = photoPath.replace("app/uploads/", "/uploads/");
         }
 
-        if (/^https?:\/\//i.test(photoPath)) {
-            return photoPath;
-        }
+        if (/^https?:\/\//i.test(photoPath)) return photoPath;
 
         return `${API_BASE_URL}${photoPath.startsWith("/") ? "" : "/"}${photoPath}`;
     }
@@ -443,9 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultLongitude: data.longitude,
             resultDescription: data.description,
             resultStatus: data.status || "pending",
-            resultCreatedAt: data.created_at
-                ? new Date(data.created_at).toLocaleString("en-IN")
-                : "—"
+            resultCreatedAt: data.created_at ? new Date(data.created_at).toLocaleString("en-IN") : "—"
         };
 
         Object.entries(fields).forEach(([id, value]) => {
@@ -456,9 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
             $("resultPhoto").src = buildPhotoUrl(data.photo_path);
         }
 
-        if ($("submissionResult")) {
-            $("submissionResult").style.display = "block";
-        }
+        if ($("submissionResult")) $("submissionResult").style.display = "block";
     }
 
     function resetTreeForm() {
@@ -473,9 +444,6 @@ document.addEventListener("DOMContentLoaded", () => {
         removePhoto("treePhoto", "photoPreview", "photoPreviewContainer", "tree");
     }
 
-    // ------------------------------------------------------------------
-    // Tree form submit
-    // ------------------------------------------------------------------
     $("treeForm")?.addEventListener("submit", async event => {
         event.preventDefault();
 
@@ -505,7 +473,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const formData = new FormData();
-
         formData.append("tree_photo", photo);
         formData.append("tree_name", treeName);
         formData.append("location", location);
@@ -513,14 +480,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("longitude", String(longitude));
         formData.append("description", description);
 
-        // Check the exact data being sent
         for (const [key, value] of formData.entries()) {
-            console.log(
-                key,
-                value instanceof File
-                    ? `${value.name} (${value.type}, ${value.size} bytes)`
-                    : value
-            );
+            console.log(key, value instanceof File ? `${value.name} (${value.type}, ${value.size} bytes)` : value);
         }
 
         if (button) {
@@ -529,11 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetchWithTimeout(TREE_API_URL, {
-                method: "POST",
-                body: formData
-            }, 60000); // uploads may take longer
-
+            const response = await fetchWithTimeout(TREE_API_URL, { method: "POST", body: formData }, 60000);
             const data = await response.json().catch(() => ({}));
 
             if (!response.ok) {
@@ -542,9 +499,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             displaySubmission(data);
             resetTreeForm();
-
             $("successOverlay")?.classList.add("show");
-
             await loadTreeHistory();
         } catch (error) {
             console.error("Tree submission error:", error);
@@ -557,9 +512,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ------------------------------------------------------------------
-    // Success popup
-    // ------------------------------------------------------------------
     $("closeSuccess")?.addEventListener("click", () => {
         $("successOverlay")?.classList.remove("show");
         showSection("tree-history");
@@ -571,49 +523,226 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ------------------------------------------------------------------
-    // Emergency form (API not connected yet)
-    // ------------------------------------------------------------------
-    $("emergencyForm")?.addEventListener("submit", event => {
+    function getSelectedIncidentType() {
+        if (selectedIncidentType) return selectedIncidentType;
+        return getIncidentTypeInput()?.value?.trim() || "";
+    }
+
+    function displayEmergencySubmission(data) {
+        const fields = {
+            emergencyResultType: data.incident_type || data.incidentType || "—",
+            emergencyResultLocation: data.location || "—",
+            emergencyResultLatitude: data.latitude ?? "—",
+            emergencyResultLongitude: data.longitude ?? "—",
+            emergencyResultDescription: data.description || "—",
+            emergencyResultStatus: data.status || "pending",
+            emergencyResultCreatedAt: data.created_at ? new Date(data.created_at).toLocaleString("en-IN") : "—"
+        };
+
+        Object.entries(fields).forEach(([id, value]) => {
+            if ($(id)) $(id).textContent = value;
+        });
+
+        const photoPath = data.photo_path || data.photoPath;
+
+        if (photoPath) {
+            const image = $("emergencyResultPhoto") || $("resultIncidentPhoto");
+            if (image) image.src = buildPhotoUrl(photoPath);
+        }
+
+        const resultContainer = $("emergencySubmissionResult") || $("emergencyResult");
+        if (resultContainer) resultContainer.style.display = "block";
+    }
+
+    function resetEmergencyForm() {
+        $("emergencyForm")?.reset();
+
+        incidentLatitude = null;
+        incidentLongitude = null;
+        selectedIncidentType = "";
+
+        if ($("incidentCharCount")) $("incidentCharCount").textContent = "0";
+        if ($("incidentLocationStatus")) $("incidentLocationStatus").textContent = "";
+
+        getIncidentCards().forEach(card => {
+            card.classList.remove("selected");
+            card.setAttribute("aria-selected", "false");
+        });
+
+        const typeInput = getIncidentTypeInput();
+        if (typeInput) typeInput.value = "";
+
+        removePhoto("incidentPhoto", "incidentPreview", "incidentPreviewContainer", "incident");
+    }
+
+    async function loadEmergencyHistory() {
+        const historyList = $("emergencyHistoryList") || $("incidentHistoryList");
+        const historyEmpty = $("emergencyHistoryEmpty") || $("incidentHistoryEmpty");
+
+        if (!historyList && !historyEmpty) return;
+
+        if (historyEmpty) {
+            historyEmpty.textContent = "Loading emergency history...";
+            historyEmpty.style.display = "block";
+        }
+
+        try {
+            const response = await fetchWithTimeout(EMERGENCY_API_URL);
+            const data = await response.json().catch(() => []);
+
+            if (!response.ok) {
+                throw new Error(extractErrorMessage(data, "Unable to load emergency history."));
+            }
+
+            const reports = Array.isArray(data) ? data : [];
+
+            if (historyList) historyList.replaceChildren();
+
+            if (reports.length === 0) {
+                if (historyEmpty) {
+                    historyEmpty.textContent = "🚨 No emergency reports submitted yet.";
+                    historyEmpty.style.display = "block";
+                }
+                return;
+            }
+
+            if (historyEmpty) historyEmpty.style.display = "none";
+
+            reports.forEach(report => {
+                if (!historyList) return;
+
+                const row = document.createElement("div");
+                row.className = "history-row emergency-history-row";
+
+                const status = (report.status || "pending").toLowerCase();
+
+                const values = [
+                    `🚨 ${report.incident_type || "Unknown incident"}`,
+                    report.created_at ? new Date(report.created_at).toLocaleDateString("en-IN") : "—",
+                    `📍 ${report.location || "—"}`,
+                    status,
+                    report.description || "—"
+                ];
+
+                values.forEach((value, index) => {
+                    const cell = document.createElement("span");
+                    cell.textContent = value;
+                    if (index === 3) cell.className = `status ${status}`;
+                    row.appendChild(cell);
+                });
+
+                historyList.appendChild(row);
+            });
+        } catch (error) {
+            console.error("Emergency history error:", error);
+
+            if (historyEmpty) {
+                historyEmpty.textContent = "Unable to load emergency history. Please check your backend.";
+                historyEmpty.style.display = "block";
+            }
+        }
+    }
+
+    $("emergencyForm")?.addEventListener("submit", async event => {
         event.preventDefault();
 
         const form = event.currentTarget;
+        const button = $("emergencySubmitBtn") || $("submitEmergencyBtn");
+        const submitText = $("emergencySubmitText");
         const photo = $("incidentPhoto")?.files?.[0];
         const location = $("incidentLocation")?.value.trim() || "";
         const description = $("incidentDescription")?.value.trim() || "";
+        const incidentType = getSelectedIncidentType();
 
         if (!form.reportValidity()) return;
         if (!validatePhoto(photo)) return;
 
+        if (!incidentType) {
+            notify("Please select an incident type.");
+            return;
+        }
+
         if (!location || incidentLatitude === null || incidentLongitude === null) {
-            notify("Please get the incident location.");
+            notify("Please get the incident location before submitting.");
             return;
         }
 
-        if (description.length < 10) {
-            notify("Please provide at least 10 characters describing the incident.");
+        if (description.length < 10 || description.length > 500) {
+            notify("Description must contain 10 to 500 characters.");
             return;
         }
 
-        notify("The Emergency API is not connected yet. No report has been saved.");
+        const formData = new FormData();
+        formData.append("incident_type", incidentType);
+        formData.append("incident_photo", photo);
+        formData.append("location", location);
+        formData.append("latitude", String(incidentLatitude));
+        formData.append("longitude", String(incidentLongitude));
+        formData.append("description", description);
+
+        for (const [key, value] of formData.entries()) {
+            console.log("Emergency FormData:", key, value instanceof File ? `${value.name} (${value.type}, ${value.size} bytes)` : value);
+        }
+
+        if (button) button.disabled = true;
+
+        if (submitText) {
+            submitText.textContent = "Submitting...";
+        } else if (button) {
+            button.textContent = "Submitting...";
+        }
+
+        try {
+            const response = await fetchWithTimeout(EMERGENCY_API_URL, { method: "POST", body: formData }, 60000);
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(extractErrorMessage(data, "Emergency report submission failed."));
+            }
+
+            console.log("Emergency report saved:", data);
+
+            displayEmergencySubmission(data);
+            resetEmergencyForm();
+
+            if ($("emergencySuccessOverlay")) {
+                $("emergencySuccessOverlay").classList.add("show");
+            } else {
+                notify("Emergency report submitted successfully.");
+            }
+
+            await loadEmergencyHistory();
+        } catch (error) {
+            console.error("Emergency submission error:", error);
+            notify(error.message || "Unable to submit emergency report.");
+        } finally {
+            if (button) button.disabled = false;
+
+            if (submitText) {
+                submitText.textContent = "Submit Emergency Report";
+            } else if (button) {
+                button.textContent = "Submit Emergency Report";
+            }
+        }
     });
 
     $("closeEmergencySuccess")?.addEventListener("click", () => {
         $("emergencySuccessOverlay")?.classList.remove("show");
     });
 
-    // ------------------------------------------------------------------
-    // Join button
-    // ------------------------------------------------------------------
+    $("emergencySuccessOverlay")?.addEventListener("click", event => {
+        if (event.target.id === "emergencySuccessOverlay") {
+            $("emergencySuccessOverlay").classList.remove("show");
+        }
+    });
+
     document.querySelector(".join-button")?.addEventListener("click", () => {
         window.location.href = "signup.html";
     });
 
-    // ------------------------------------------------------------------
-    // Initial page setup
-    // ------------------------------------------------------------------
     showSection("plant-tree");
-    loadTreeHistory(); // also fills the sidebar Karma score on load
+    loadTreeHistory();
+    loadEmergencyHistory();
 
     console.log("Karmachakra dashboard loaded.");
 });
