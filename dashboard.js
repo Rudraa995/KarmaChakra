@@ -56,9 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function extractErrorMessage(data, fallback) {
         if (!data) return fallback;
+
         if (Array.isArray(data.detail)) {
-            return data.detail.map(item => item.msg).join(", ") || fallback;
+            return data.detail.map(item => {
+                const field = item.loc?.join(" → ");
+                return field ? `${field}: ${item.msg}` : item.msg;
+            }).join(", ") || fallback;
         }
+
         return data.detail || fallback;
     }
 
@@ -120,14 +125,17 @@ document.addEventListener("DOMContentLoaded", () => {
             notify("Please upload a photo.");
             return false;
         }
+
         if (!ALLOWED_TYPES.includes(file.type)) {
             notify("Only JPG, JPEG and PNG images are allowed.");
             return false;
         }
+
         if (file.size > MAX_FILE_SIZE) {
             notify("Photo size cannot exceed 10 MB.");
             return false;
         }
+
         return true;
     }
 
@@ -309,16 +317,36 @@ document.addEventListener("DOMContentLoaded", () => {
         if ($("incidentCharCount")) $("incidentCharCount").textContent = event.target.value.length;
     });
 
-    function updateKarmaScore(trees) {
-        const verifiedCount = trees.filter(
-            tree => (tree.status || "").toLowerCase() === "verified"
-        ).length;
-        const verifiedTotal = verifiedCount * KARMA_PER_TREE;
+    function updateKarmaScore(trees = []) {
+        const totalTrees = Array.isArray(trees) ? trees.length : 0;
+        const totalPoints = totalTrees * KARMA_PER_TREE;
 
-        if ($("sideKarma")) $("sideKarma").textContent = `${verifiedTotal} pts`;
-        if ($("totalKarma")) $("totalKarma").textContent = `${verifiedTotal} pts`;
-        if ($("karmaScore")) $("karmaScore").textContent = verifiedTotal.toLocaleString("en-IN");
-        if ($("karmaFill")) $("karmaFill").style.width = `${Math.min(verifiedTotal, 100)}%`;
+        const sideKarma = $("sideKarma");
+        const totalKarma = $("totalKarma");
+        const karmaScore = $("karmaScore");
+        const karmaFill = $("karmaFill");
+
+        if (sideKarma) {
+            sideKarma.replaceChildren();
+            sideKarma.appendChild(document.createTextNode(`${totalPoints} `));
+
+            const unit = document.createElement("span");
+            unit.textContent = "pts";
+            sideKarma.appendChild(unit);
+        }
+
+        if (totalKarma) totalKarma.textContent = `${totalPoints} pts`;
+        if (karmaScore) karmaScore.textContent = totalPoints.toLocaleString("en-IN");
+        if (karmaFill) karmaFill.style.width = `${Math.min(totalPoints, 100)}%`;
+
+        return totalPoints;
+    }
+
+    function createHistoryCell(value, className = "") {
+        const cell = document.createElement("span");
+        cell.textContent = value ?? "—";
+        if (className) cell.className = className;
+        return cell;
     }
 
     function renderTreeHistory(trees) {
@@ -342,22 +370,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const row = document.createElement("div");
             row.className = "history-row";
 
-            const status = (tree.status || "pending").toLowerCase();
+            const status = String(tree.status || "pending").toLowerCase();
+            const date = tree.created_at ? new Date(tree.created_at).toLocaleDateString("en-IN") : "—";
 
-            const values = [
-                `🌱 ${tree.tree_name || "Unnamed tree"}`,
-                tree.created_at ? new Date(tree.created_at).toLocaleDateString("en-IN") : "—",
-                `📍 ${tree.location || "—"}`,
-                status,
-                `${status === "verified" ? KARMA_PER_TREE : 0} pts`
-            ];
-
-            values.forEach((value, index) => {
-                const cell = document.createElement("span");
-                cell.textContent = value;
-                if (index === 3) cell.className = `status ${status}`;
-                row.appendChild(cell);
-            });
+            row.append(
+                createHistoryCell(`🌱 ${tree.tree_name || "Unnamed tree"}`, "tree-name"),
+                createHistoryCell(date),
+                createHistoryCell(`📍 ${tree.location || "—"}`),
+                createHistoryCell(status.charAt(0).toUpperCase() + status.slice(1), `status ${status}`),
+                createHistoryCell(`${KARMA_PER_TREE} pts`, "karma-points")
+            );
 
             historyList.appendChild(row);
         });
@@ -378,7 +400,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetchWithTimeout(TREE_API_URL);
 
             if (!response.ok) {
-                throw new Error("Unable to load tree history. Check your GET API.");
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(extractErrorMessage(errorData, "Unable to load tree history. Check your GET API."));
             }
 
             const trees = await response.json();

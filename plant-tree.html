@@ -211,19 +211,6 @@
         </section>
 
         <!-- Emergency Section -->
-        <div class="emergency-form-section">
-            <label class="emergency-form-label">
-        <span>1.</span> Incident Type
-    </label>
-
-            <select id="incidentType" name="incident_type" class="emergency-input" required>
-        <option value="">Select incident type</option>
-        <option value="Illegal Cutting">Illegal Cutting</option>
-        <option value="Forest Fire">Forest Fire</option>
-        <option value="Pollution">Pollution</option>
-        <option value="Water Leakage">Water Leakage</option>
-    </select>
-        </div>
         <section class="dashboard-section" id="emergency">
             <div class="emergency-grid">
                 <div class="emergency-card">
@@ -255,7 +242,18 @@
 
                 <form id="emergencyForm" enctype="multipart/form-data">
                     <div class="emergency-form-section">
-                        <label class="emergency-form-label" for="incidentPhoto"><span>1.</span> Upload Photo Evidence</label>
+                        <label class="emergency-form-label" for="incidentType"><span>1.</span> Incident Type</label>
+                        <select id="incidentType" name="incident_type" class="emergency-input" required>
+                            <option value="">Select incident type</option>
+                            <option value="Illegal Cutting">Illegal Cutting</option>
+                            <option value="Forest Fire">Forest Fire</option>
+                            <option value="Pollution">Pollution</option>
+                            <option value="Water Leakage">Water Leakage</option>
+                        </select>
+                    </div>
+
+                    <div class="emergency-form-section">
+                        <label class="emergency-form-label" for="incidentPhoto"><span>2.</span> Upload Photo Evidence</label>
                         <p class="emergency-form-help">Upload a clear photo showing the environmental incident.</p>
 
                         <label for="incidentPhoto" class="emergency-upload-box">
@@ -272,7 +270,7 @@
                     </div>
 
                     <div class="emergency-form-section">
-                        <label class="emergency-form-label" for="incidentLocation"><span>2.</span> Location</label>
+                        <label class="emergency-form-label" for="incidentLocation"><span>3.</span> Location</label>
                         <p class="emergency-form-help">Tell us where the incident occurred.</p>
                         <div class="emergency-location-row">
                             <input type="text" id="incidentLocation" name="incident_location" class="emergency-input" placeholder="Incident location" readonly required>
@@ -282,7 +280,7 @@
                     </div>
 
                     <div class="emergency-form-section">
-                        <label for="incidentDescription" class="emergency-form-label"><span>3.</span> Describe the Incident</label>
+                        <label for="incidentDescription" class="emergency-form-label"><span>4.</span> Describe the Incident</label>
                         <p class="emergency-form-help">Provide details about what happened and where it happened.</p>
                         <textarea id="incidentDescription" name="incident_description" class="emergency-input emergency-textarea" maxlength="1000" rows="7" placeholder="Describe the environmental incident..." required></textarea>
                         <div class="emergency-character-count"><span id="incidentCharCount">0</span> / 1000</div>
