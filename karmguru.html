@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karma Guru | KarmaChakra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="karmguru.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR (change links to match your pages) ===== -->
+  <header class="kg-nav">
+    <a href="index.html" class="kg-logo">KarmChakra</a>
+    <nav class="kg-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="index.html#karmas">Karmas</a>
+      <a href="profile.html">Profile</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="karmguru.html" class="active">Karma Guru</a>
+      <a href="login.html#signup" class="kg-join">Join</a>
+    </nav>
+  </header>
+
+  <main class="kg">
+
+    <!-- ===== LEFT: GURU CARD ===== -->
+    <aside class="kg-guru">
+      <div class="guru-photo">
+        <span class="aura" aria-hidden="true"></span>
+        <!-- >>> PUT YOUR PHOTO IN assets/karm-guru.png  (name it exactly this) <<< -->
+        <img id="guruImg" src="assets/karm-guru.png" alt="Karma Guru">
+        <div class="photo-fallback" id="photoFallback">Add your photo<br><small>assets/karm-guru.png</small></div>
+      </div>
+
+      <h1>Karma Guru</h1>
+      <p class="role">Digital Rishi, Wisdom AI</p>
+      <p class="about">Trained on the spirit of the Gita, Upanishads and modern impact science. Here to guide you, suggest karmas and keep your dharma steady.</p>
+
+      <div class="tags">
+        <span>Guidance</span><span>Motivation</span><span>Goal Support</span>
+      </div>
+    </aside>
+
+    <!-- ===== RIGHT: CHAT ===== -->
+    <section class="kg-chat">
+      <div class="chat-head">
+        <span class="dot"></span>
+        <h2>Sanvaad, Conversation</h2>
+        <button type="button" id="clearBtn" class="clear" title="Start a new conversation">New chat</button>
+      </div>
+
+      <div class="messages" id="messages" aria-live="polite"></div>
+
+      <div class="chat-foot">
+        <div class="chips" id="chips">
+          <button type="button">Suggest a karma for today</button>
+          <button type="button">How do I earn more Mudrā?</button>
+          <button type="button">Motivate me to continue</button>
+          <button type="button">Explain Prakriti Karma</button>
+        </div>
+
+        <form class="composer" id="composer" autocomplete="off">
+          <input type="text" id="msgInput" placeholder="Ask Karma Guru for guidance..." maxlength="500" aria-label="Your message">
+          <button type="submit" class="send" aria-label="Send message">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+
+        <p class="suggest">Suggested karmas today:
+          <a href="index.html#karmas">🌱 Prakriti Karma</a>
+          <a href="index.html#karmas">🤝 Seva Karma</a>
+          <a href="index.html#karmas">🐾 Jeeva Karma</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="karmguru.js"></script>
+</body>
+</html>
