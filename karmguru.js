@@ -1,5 +1,5 @@
 // ====== SETTINGS ======
-const GURU_IMAGE = 'assets/karm-guru.png';   // change only if your photo has another name
+const GURU_IMAGE = 'assets/rishi.png';   // change only if your photo has another name
 const GURU_API = '';                          // later: 'http://localhost:5000/api/guru'  (leave empty for demo replies)
 // ======================
 
